@@ -9,6 +9,7 @@ const links = [
   { to: "/technology", label: "Technology" },
   { to: "/buildings", label: "For Buildings" },
   { to: "/investors", label: "For Investors" },
+  { to: "/research", label: "Research" },
   { to: "/deck", label: "Pitch Deck" },
 ];
 
