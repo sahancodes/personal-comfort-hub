@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Thermometer,
@@ -12,7 +13,26 @@ import {
   Gauge,
   Brain,
   Plug,
+  Wind,
+  Flame,
+  Droplets,
+  Sun,
+  Snowflake,
+  Fan,
 } from "lucide-react";
+
+const liveUpdates = [
+  { icon: Thermometer, zone: "Zone 4 · Maya", msg: "Feels cold → heated chair on, setpoint held at 21.5°C", saved: "+0.8 kWh saved" },
+  { icon: Fan, zone: "Zone 7 · Daniel", msg: "Feels warm → desk fan engaged, deadband widened +1.2°C", saved: "+1.4 kWh saved" },
+  { icon: Flame, zone: "Zone 2 · Aiko", msg: "Cold feet detected → foot radiator on, HVAC unchanged", saved: "+0.6 kWh saved" },
+  { icon: Droplets, zone: "Zone 9 · Lab wing", msg: "Humidity 38% → reducing dehumidifier load", saved: "+2.1 kWh saved" },
+  { icon: Snowflake, zone: "Zone 1 · Priya", msg: "Comfort optimal → cooling reduced 12% on AHU-3", saved: "+1.9 kWh saved" },
+  { icon: Sun, zone: "Zone 5 · Atrium", msg: "Solar gain rising → preemptive shading + setpoint nudge", saved: "+3.2 kWh saved" },
+  { icon: Wind, zone: "Zone 6 · Lucas", msg: "Stuffy feedback → boosting fresh air to 8 L/s/person", saved: "CO₂ −180 ppm" },
+  { icon: Brain, zone: "Zone 8 · Floor 4", msg: "Comfort model retrained on 1,284 new feedback points", saved: "Accuracy 94%" },
+  { icon: Gauge, zone: "Zone 3 · Sara", msg: "Predicted discomfort in 6 min → pre-cool initiated", saved: "+0.9 kWh saved" },
+  { icon: Leaf, zone: "Building total", msg: "Today's HVAC load 27% below baseline forecast", saved: "412 kg CO₂ avoided" },
+];
 import { Button } from "@/components/ui/button";
 import SiteLayout from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-office.jpg";
@@ -54,6 +74,24 @@ const steps = [
 ];
 
 export default function Index() {
+  const [updateIdx, setUpdateIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setUpdateIdx((i) => {
+          let next = Math.floor(Math.random() * liveUpdates.length);
+          if (next === i) next = (next + 1) % liveUpdates.length;
+          return next;
+        });
+        setVisible(true);
+      }, 280);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
+  const update = liveUpdates[updateIdx];
+  const UpdateIcon = update.icon;
   return (
     <SiteLayout>
       {/* Hero */}
@@ -105,16 +143,28 @@ export default function Index() {
                 height={1080}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-6">
-                <div className="flex items-center gap-3 rounded-2xl border border-border bg-card/90 p-4 backdrop-blur">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-accent text-accent-foreground animate-pulse-glow">
-                    <Thermometer className="h-5 w-5" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 via-background/70 to-transparent p-6 pt-16">
+                <div
+                  key={updateIdx}
+                  className={`flex items-center gap-3 rounded-2xl border border-border bg-card/90 p-5 backdrop-blur transition-all duration-300 ${
+                    visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                  }`}
+                  style={{ minHeight: "88px" }}
+                >
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground animate-pulse-glow">
+                    <UpdateIcon className="h-5 w-5" />
                   </span>
-                  <div className="flex-1">
-                    <div className="text-sm font-semibold">Zone 4 · Maya</div>
-                    <div className="text-xs text-muted-foreground">Feels cold → heated chair on, setpoint held at 21.5°C</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                      </span>
+                      {update.zone}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">{update.msg}</div>
                   </div>
-                  <span className="text-xs font-semibold text-primary">+0.8 kWh saved</span>
+                  <span className="text-xs font-semibold text-primary whitespace-nowrap">{update.saved}</span>
                 </div>
               </div>
             </div>
