@@ -143,16 +143,28 @@ export default function Index() {
                 height={1080}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent p-6">
-                <div className="flex items-center gap-3 rounded-2xl border border-border bg-card/90 p-4 backdrop-blur">
-                  <span className="grid h-10 w-10 place-items-center rounded-full bg-accent text-accent-foreground animate-pulse-glow">
-                    <Thermometer className="h-5 w-5" />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/95 via-background/70 to-transparent p-6 pt-16">
+                <div
+                  key={updateIdx}
+                  className={`flex items-center gap-3 rounded-2xl border border-border bg-card/90 p-5 backdrop-blur transition-all duration-300 ${
+                    visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                  }`}
+                  style={{ minHeight: "88px" }}
+                >
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-accent text-accent-foreground animate-pulse-glow">
+                    <UpdateIcon className="h-5 w-5" />
                   </span>
-                  <div className="flex-1">
-                    <div className="text-sm font-semibold">Zone 4 · Maya</div>
-                    <div className="text-xs text-muted-foreground">Feels cold → heated chair on, setpoint held at 21.5°C</div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 text-sm font-semibold">
+                      <span className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                      </span>
+                      {update.zone}
+                    </div>
+                    <div className="text-xs text-muted-foreground mt-0.5">{update.msg}</div>
                   </div>
-                  <span className="text-xs font-semibold text-primary">+0.8 kWh saved</span>
+                  <span className="text-xs font-semibold text-primary whitespace-nowrap">{update.saved}</span>
                 </div>
               </div>
             </div>
