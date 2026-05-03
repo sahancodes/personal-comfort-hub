@@ -74,6 +74,24 @@ const steps = [
 ];
 
 export default function Index() {
+  const [updateIdx, setUpdateIdx] = useState(0);
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setUpdateIdx((i) => {
+          let next = Math.floor(Math.random() * liveUpdates.length);
+          if (next === i) next = (next + 1) % liveUpdates.length;
+          return next;
+        });
+        setVisible(true);
+      }, 280);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, []);
+  const update = liveUpdates[updateIdx];
+  const UpdateIcon = update.icon;
   return (
     <SiteLayout>
       {/* Hero */}
