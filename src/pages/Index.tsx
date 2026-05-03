@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   ArrowRight,
   Thermometer,
@@ -12,7 +13,26 @@ import {
   Gauge,
   Brain,
   Plug,
+  Wind,
+  Flame,
+  Droplets,
+  Sun,
+  Snowflake,
+  Fan,
 } from "lucide-react";
+
+const liveUpdates = [
+  { icon: Thermometer, zone: "Zone 4 · Maya", msg: "Feels cold → heated chair on, setpoint held at 21.5°C", saved: "+0.8 kWh saved" },
+  { icon: Fan, zone: "Zone 7 · Daniel", msg: "Feels warm → desk fan engaged, deadband widened +1.2°C", saved: "+1.4 kWh saved" },
+  { icon: Flame, zone: "Zone 2 · Aiko", msg: "Cold feet detected → foot radiator on, HVAC unchanged", saved: "+0.6 kWh saved" },
+  { icon: Droplets, zone: "Zone 9 · Lab wing", msg: "Humidity 38% → reducing dehumidifier load", saved: "+2.1 kWh saved" },
+  { icon: Snowflake, zone: "Zone 1 · Priya", msg: "Comfort optimal → cooling reduced 12% on AHU-3", saved: "+1.9 kWh saved" },
+  { icon: Sun, zone: "Zone 5 · Atrium", msg: "Solar gain rising → preemptive shading + setpoint nudge", saved: "+3.2 kWh saved" },
+  { icon: Wind, zone: "Zone 6 · Lucas", msg: "Stuffy feedback → boosting fresh air to 8 L/s/person", saved: "CO₂ −180 ppm" },
+  { icon: Brain, zone: "Zone 8 · Floor 4", msg: "Comfort model retrained on 1,284 new feedback points", saved: "Accuracy 94%" },
+  { icon: Gauge, zone: "Zone 3 · Sara", msg: "Predicted discomfort in 6 min → pre-cool initiated", saved: "+0.9 kWh saved" },
+  { icon: Leaf, zone: "Building total", msg: "Today's HVAC load 27% below baseline forecast", saved: "412 kg CO₂ avoided" },
+];
 import { Button } from "@/components/ui/button";
 import SiteLayout from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-office.jpg";
