@@ -81,7 +81,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
               Comfort that is<br /><span className="text-accent">truly personal.</span>
             </h1>
             <p className="mt-8 max-w-3xl text-2xl opacity-85">
-              The plug-in intelligence layer that makes any BMS aware of every body in the building —
+              The plug-in intelligence layer that makes any BMS aware of every body in the building,
               and cuts HVAC energy 20–40% in the process.
             </p>
           </div>
@@ -164,7 +164,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <div className="mt-14 grid grid-cols-3 gap-8">
             {[
               { n: "01", i: Activity, t: "Sense", d: "Zone sensors + occupant feedback ('too cold / too warm / OK') capture temperature, humidity, CO₂ and the human signal." },
-              { n: "02", i: Brain, t: "Decide locally", d: "Edge AI learns per-zone and per-occupant comfort preference — no cloud latency." },
+              { n: "02", i: Brain, t: "Decide locally", d: "Edge AI learns per-zone and per-occupant comfort preference with no cloud latency." },
               { n: "03", i: Workflow, t: "Act", d: "Advisory setpoints widen BMS deadbands while personal comfort devices (fans, heated chairs, radiant panels, foot warmers) close the gap." },
             ].map((s) => (
               <div key={s.n} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-8">
@@ -190,7 +190,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <h2 className="mt-3 font-display text-6xl font-bold">Three things, working as one.</h2>
           <div className="mt-12 grid grid-cols-3 gap-8">
             {[
-              { i: Plug, t: "ACE Gateway", d: "Edge appliance speaks every major BMS protocol. Runs comfort models locally — no cloud dependency." },
+              { i: Plug, t: "ACE Gateway", d: "Edge appliance speaks every major BMS protocol. Runs comfort models locally, with no cloud dependency." },
               { i: Thermometer, t: "ACE Sense", d: "Battery-powered desk/zone sensors + an opt-in occupant feedback app. Mesh installs in days." },
               { i: Database, t: "ACE Console", d: "Building dashboard for FMs. Live comfort heatmap, energy savings, and ESG-ready exports." },
             ].map((c) => (
@@ -256,7 +256,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
             {[
               { t: "Gateway & sensors", v: "$8–18 / m² one-time", d: "Hardware capex, financeable through partner channel." },
               { t: "ACE Console SaaS", v: "$1.20 / seat / mo", d: "Per-occupant subscription. Multi-year contracts, 90%+ gross margin." },
-              { t: "Savings share", v: "15% of verified kWh", d: "Optional outcome-based tier — aligns incentives, removes capex friction." },
+              { t: "Savings share", v: "15% of verified kWh", d: "Optional outcome-based tier that aligns incentives and removes capex friction." },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl border border-border bg-card p-8 shadow-soft">
                 <h3 className="font-display text-2xl font-semibold">{c.t}</h3>
@@ -296,9 +296,9 @@ const slides: { title: string; render: () => ReactNode }[] = [
             ))}
           </div>
           <div className="mt-12 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-8 text-2xl italic">
-            "ACE found 31% in HVAC savings on a building we'd already optimized twice — and tenants
+            "ACE found 31% in HVAC savings on a building we'd already optimized twice, and tenants
             stopped complaining about temperature. It's a category we didn't know we needed."
-            <div className="mt-4 text-base not-italic opacity-70">— Head of Sustainability, Tier-1 European REIT</div>
+            <div className="mt-4 text-base not-italic opacity-70">Head of Sustainability, Tier-1 European REIT</div>
           </div>
         </div>
       </SlideFrame>
@@ -313,9 +313,9 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <h2 className="mt-3 font-display text-6xl font-bold">A moat that compounds.</h2>
           <div className="mt-12 grid grid-cols-2 gap-8">
             {[
-              { i: ShieldCheck, t: "Hardware certifications", d: "BMS-grade gateway with CE, UL, BTL listings — months of regulatory work for any new entrant." },
+              { i: ShieldCheck, t: "Hardware certifications", d: "BMS-grade gateway with CE, UL, BTL listings, with months of regulatory work for any new entrant." },
               { i: Brain, t: "Per-occupant data flywheel", d: "Each user makes the next building deploy faster and cheaper. Cross-tenant generalization compounds." },
-              { i: Plug, t: "Vendor-neutral integration", d: "We work with every BMS — no incumbent will. Our distribution is structural, not contractual." },
+              { i: Plug, t: "Vendor-neutral integration", d: "We work with every BMS, which no incumbent will. Our distribution is structural, not contractual." },
               { i: Workflow, t: "Outcome-aligned pricing", d: "We win when buildings save energy. CFOs sign multi-year deals because risk is on us." },
             ].map((c) => (
               <div key={c.t} className="flex items-start gap-6 rounded-2xl border border-border bg-card p-7 shadow-soft">
@@ -437,7 +437,7 @@ export default function Deck() {
             <Home className="h-4 w-4" /> Back to site
           </Link>
           <div className="text-sm text-muted-foreground">
-            ACE · Pitch Deck · <span className="font-semibold text-foreground">{i + 1}</span> / {slides.length} — <span className="hidden sm:inline">{slides[i].title}</span>
+            ACE · Pitch Deck · <span className="font-semibold text-foreground">{i + 1}</span> / {slides.length} · <span className="hidden sm:inline">{slides[i].title}</span>
           </div>
           <div className="flex items-center gap-2">
             <Button size="sm" variant="outline" onClick={toggleFs}>
