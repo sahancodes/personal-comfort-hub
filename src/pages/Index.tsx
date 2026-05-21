@@ -53,12 +53,12 @@ const features = [
   {
     icon: Brain,
     title: "Local AI comfort optimization",
-    desc: "Edge intelligence combines sensor data and occupant feedback to learn comfort preferences per zone and per person — without cloud latency.",
+    desc: "Edge intelligence combines sensor data and occupant feedback to learn comfort preferences per zone and per person, without cloud latency.",
   },
   {
     icon: Gauge,
     title: "Safely widens HVAC deadbands",
-    desc: "Advisory setpoint optimization for the BMS, while personal comfort devices — heated chairs, desk fans, radiant panels, foot warmers — close the last-mile gap.",
+    desc: "Advisory setpoint optimization for the BMS, while personal comfort devices, heated chairs, desk fans, radiant panels, foot warmers, close the last-mile gap.",
   },
   {
     icon: Leaf,
@@ -69,7 +69,7 @@ const features = [
 
 const steps = [
   { n: "01", title: "Sense", desc: "Sensors and an opt-in occupant feedback app capture temperature, humidity, CO₂, occupancy and 'too cold / too warm / comfortable' votes." },
-  { n: "02", title: "Decide locally", desc: "The Smart Edge Comfort Hub runs AI inference on-site — no cloud dependency for real-time decisions." },
+  { n: "02", title: "Decide locally", desc: "The Smart Edge Comfort Hub runs AI inference on-site, with no cloud dependency for real-time decisions." },
   { n: "03", title: "Act", desc: "Direct control of personal comfort devices + advisory setpoint signals to the existing HVAC/BMS." },
 ];
 
@@ -111,7 +111,7 @@ export default function Index() {
             <p className="mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up [animation-delay:120ms]">
               Adaptive Climate Engine is human-centric AI middleware for legacy buildings.
               It connects to your existing BMS and combines sensor data, occupant feedback
-              and local AI to deliver personal comfort and reduce HVAC energy waste — without
+              and local AI to deliver personal comfort and reduce HVAC energy waste without
               expensive BMS replacement.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 animate-fade-up [animation-delay:240ms]">
@@ -211,7 +211,7 @@ export default function Index() {
               </h2>
               <p className="mt-4 max-w-xl text-lg text-muted-foreground">
                 Legacy BMS use zonal HVAC control, sensor-only logic and fixed setpoints. The result
-                is overcooling, overheating, occupant complaints and unnecessary HVAC energy waste —
+                is overcooling, overheating, occupant complaints and unnecessary HVAC energy waste,
                 and most full BMS replacements are too expensive and disruptive to justify.
               </p>
               <p className="mt-3 max-w-xl text-sm text-muted-foreground">
@@ -255,8 +255,8 @@ export default function Index() {
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Adaptive Climate Engine sits next to your existing BMS at the building automation layer.
-            It senses, learns, and orchestrates personal comfort devices and advisory HVAC setpoints
-            — making any legacy building human-centric without replacing it.
+            It senses, learns, and orchestrates personal comfort devices and advisory HVAC setpoints,
+            making any legacy building human-centric without replacing it.
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -305,7 +305,7 @@ export default function Index() {
             <Building2 className="h-10 w-10" />
             <h3 className="mt-6 font-display text-3xl font-bold">For Building Owners</h3>
             <p className="mt-2 max-w-sm text-primary-foreground/85">
-              Improve comfort, cut HVAC waste and extend the life of your existing BMS — pilot-first,
+              Improve comfort, cut HVAC waste and extend the life of your existing BMS with a pilot-first,
               low-risk deployment.
             </p>
             <div className="mt-8 inline-flex items-center gap-2 text-sm font-semibold">
@@ -335,7 +335,7 @@ export default function Index() {
             </h2>
             <p className="mt-4 text-primary-foreground/85">
               Start with one floor or zone. Integrate with your existing BMS in read-only/advisory mode.
-              Validate comfort and energy impact before scaling — no rip-and-replace.
+              Validate comfort and energy impact before scaling, with no rip-and-replace.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
