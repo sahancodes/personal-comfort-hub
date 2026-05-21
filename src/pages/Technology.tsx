@@ -8,9 +8,9 @@ import {
 
 const blocks = [
   { icon: Plug, title: "BMS / automation integration", desc: "Edge gateway speaks BACnet/IP, BACnet MS/TP, Modbus TCP/RTU, KNX, M-Bus and integrates with Priva, Niagara, Siemens Desigo, Honeywell, JCI Metasys and Schneider EcoStruxure." },
-  { icon: Radio, title: "Sensors + occupant feedback", desc: "Battery-powered desk and zone sensors measure temperature, humidity, CO₂, occupancy and light. A simple in-app vote — 'too cold / too warm / comfortable' — captures the human signal." },
-  { icon: Brain, title: "Local AI comfort model", desc: "Edge ML learns per-zone and per-occupant thermal preference from low-friction feedback. Inference runs on-device — no cloud latency, no biometric data leaving the building." },
-  { icon: Workflow, title: "Orchestration engine", desc: "Coordinates personal comfort devices — smart desk fans, heated chairs, radiant panels, heated foot mats, local air diffusers — and issues advisory setpoint signals to the BMS." },
+  { icon: Radio, title: "Sensors + occupant feedback", desc: "Battery-powered desk and zone sensors measure temperature, humidity, CO₂, occupancy and light. A simple in-app vote, 'too cold / too warm / comfortable', captures the human signal." },
+  { icon: Brain, title: "Local AI comfort model", desc: "Edge ML learns per-zone and per-occupant thermal preference from low-friction feedback. Inference runs on-device with no cloud latency, no biometric data leaving the building." },
+  { icon: Workflow, title: "Orchestration engine", desc: "Coordinates personal comfort devices, smart desk fans, heated chairs, radiant panels, heated foot mats, local air diffusers, and issues advisory setpoint signals to the BMS." },
   { icon: Database, title: "Measurement & verification", desc: "IPMVP-aligned baselining. Exports for GRESB, CRREM, BREEAM and CSRD reporting. Read-only/advisory mode by default until pilot validation." },
   { icon: ShieldCheck, title: "Privacy & safety by design", desc: "On-device inference. Existing BMS safety logic and limits remain authoritative. SOC 2 / GDPR aligned. Tenants opt in per workspace." },
 ];
@@ -26,7 +26,7 @@ const devices = [
 function ArchitectureDiagram() {
   return (
     <div className="rounded-3xl border border-border bg-card p-6 shadow-soft md:p-10">
-      {/* Layer 1 — SCADA */}
+      {/* Layer 1 - SCADA */}
       <div className="rounded-2xl border border-border bg-primary/5 p-5">
         <div className="flex flex-wrap items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground text-sm font-bold">1</span>
@@ -47,7 +47,7 @@ function ArchitectureDiagram() {
         <span className="rounded border border-dashed border-border px-2 py-0.5">read / advisory ⇅</span>
       </div>
 
-      {/* Layer 2 — Automation + ACE */}
+      {/* Layer 2 - Automation + ACE */}
       <div className="rounded-2xl border-2 border-accent bg-accent-soft/40 p-5">
         <div className="flex flex-wrap items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-accent-foreground text-sm font-bold">2</span>
@@ -110,7 +110,7 @@ function ArchitectureDiagram() {
         <span className="rounded border border-dashed border-border px-2 py-0.5">sensing · actuation ⇅</span>
       </div>
 
-      {/* Layer 3 — Field */}
+      {/* Layer 3 - Field */}
       <div className="rounded-2xl border border-border bg-secondary/60 p-5">
         <div className="flex flex-wrap items-center gap-3">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-foreground text-background text-sm font-bold">3</span>
@@ -147,7 +147,7 @@ export default function Technology() {
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
           Adaptive Climate Engine is a retrofit-friendly middleware that operates at the building
-          automation layer — not just the SCADA dashboard. It senses, learns and orchestrates while
+          automation layer, not just the SCADA dashboard. It senses, learns and orchestrates while
           your existing BMS and safety logic stay in charge.
         </p>
       </section>
@@ -188,7 +188,7 @@ export default function Technology() {
               SCADA platforms and cloud dashboards are excellent for monitoring, trending and
               reporting. But real-time comfort optimization needs sub-second decisions that don't
               depend on internet connectivity or distant servers. ACE runs locally on the edge so
-              the building keeps working — and keeps people comfortable — even when the cloud
+              the building keeps working and keeps people comfortable, even when the cloud
               doesn't.
             </p>
             <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
@@ -204,7 +204,7 @@ export default function Technology() {
             </h3>
             <p className="mt-3 text-muted-foreground">
               Legacy HVAC controls <em>zones</em> with one temperature for many people. ACE adds a
-              layer of <em>micro-comfort</em> around each occupant — driven by personal comfort
+              layer of <em>micro-comfort</em> around each occupant, driven by personal comfort
               devices and informed by what people actually feel.
             </p>
             <div className="mt-6 grid grid-cols-2 gap-3 text-sm">
