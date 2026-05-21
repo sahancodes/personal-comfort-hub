@@ -191,7 +191,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <div className="mt-12 grid grid-cols-3 gap-8">
             {[
               { i: Plug, t: "ACE Gateway", d: "Edge appliance speaks every major BMS protocol. Runs comfort models locally — no cloud dependency." },
-              { i: Thermometer, t: "ACE Sense", d: "Battery-powered desk pucks + opt-in wearable signals. Mesh installs in days." },
+              { i: Thermometer, t: "ACE Sense", d: "Battery-powered desk/zone sensors + an opt-in occupant feedback app. Mesh installs in days." },
               { i: Database, t: "ACE Console", d: "Building dashboard for FMs. Live comfort heatmap, energy savings, and ESG-ready exports." },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl border border-border bg-gradient-surface p-8 shadow-soft">
