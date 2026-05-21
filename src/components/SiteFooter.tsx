@@ -13,7 +13,7 @@ export default function SiteFooter() {
             ACE
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-            Adaptive Climate Engine — personal comfort for buildings with a brain.
+            Adaptive Climate Engine: personal comfort for buildings with a brain.
             Plug into any BMS, delight every occupant, cut HVAC energy.
           </p>
         </div>
