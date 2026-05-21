@@ -16,16 +16,14 @@ const links = [
 export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
-      <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
+    <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-xl">
+      <div className="container flex h-20 items-center justify-between gap-5">
+        <Link to="/" className="flex shrink-0 items-center" aria-label="Adaptive Climate Engine home">
           <img
-            src="/ace-icon.svg"
-            alt="Adaptive Climate Engine logo"
-            className="h-9 w-9 rounded-lg shadow-glow"
+            src="/ace-logo-horizontal.svg"
+            alt="Adaptive Climate Engine"
+            className="h-14 w-auto max-w-[320px] sm:h-16 lg:max-w-[380px]"
           />
-          <span>ACE</span>
-          <span className="hidden text-xs font-medium text-muted-foreground sm:inline">Adaptive Climate Engine</span>
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
