@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Wind } from "lucide-react";
 
 export default function SiteFooter() {
   return (
@@ -7,9 +6,11 @@ export default function SiteFooter() {
       <div className="container grid gap-8 py-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="flex items-center gap-2 font-display font-bold text-lg">
-            <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-cool text-primary-foreground">
-              <Wind className="h-5 w-5" />
-            </span>
+            <img
+              src="/ace-icon.svg"
+              alt="Adaptive Climate Engine logo"
+              className="h-9 w-9 rounded-lg"
+            />
             ACE
           </div>
           <p className="mt-3 max-w-sm text-sm text-muted-foreground">
