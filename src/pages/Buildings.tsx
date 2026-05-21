@@ -15,17 +15,17 @@ const concerns = [
   { icon: Users, t: "Tenant comfort complaints", d: "Per-person comfort signals reduce 'too cold / too warm' complaints and improve tenant satisfaction and retention." },
   { icon: Leaf, t: "ESG & carbon pressure", d: "M&V-aligned data supports GRESB, CRREM, BREEAM and CSRD reporting and a credible Scope 2 reduction story." },
   { icon: Plug, t: "Expensive BMS retrofit", d: "Edge middleware avoids full rip-and-replace, lowers CAPEX and works with your existing BMS vendor." },
-  { icon: ShieldCheck, t: "Downtime & disruption", d: "Installs during normal operating hours. Starts in read-only / advisory mode — your BMS safety logic stays authoritative." },
+  { icon: ShieldCheck, t: "Downtime & disruption", d: "Installs during normal operating hours. Starts in read-only / advisory mode, while your BMS safety logic stays authoritative." },
   { icon: Building2, t: "Vendor lock-in", d: "Vendor-neutral middleware: BACnet, Modbus, KNX, Priva, Niagara, Siemens, Honeywell, JCI, Schneider." },
 ];
 
 const pilotSteps = [
-  { n: "01", t: "Start small", d: "Begin with one floor or a selected zone — typically 1–2 floors." },
+  { n: "01", t: "Start small", d: "Begin with one floor or a selected zone, typically 1–2 floors." },
   { n: "02", t: "Connect to existing BMS", d: "Integrate in read-only / advisory mode. No safety changes." },
-  { n: "03", t: "Deploy personal comfort devices", d: "Smart desk fans, heated chairs, radiant panels, foot warmers — selected for the space." },
+  { n: "03", t: "Deploy personal comfort devices", d: "Smart desk fans, heated chairs, radiant panels and foot warmers, selected for the space." },
   { n: "04", t: "Baseline comfort + energy", d: "Capture pre-deployment thermal comfort and HVAC energy data." },
   { n: "05", t: "Validate impact", d: "Measure comfort improvement and energy-saving potential against the baseline." },
-  { n: "06", t: "Scale", d: "Roll out floor-by-floor, then portfolio-wide — only after measurable results." },
+  { n: "06", t: "Scale", d: "Roll out floor-by-floor, then portfolio-wide, only after measurable results." },
 ];
 
 export default function Buildings() {
@@ -52,13 +52,12 @@ export default function Buildings() {
       <section className="container py-20">
         <p className="text-sm font-semibold uppercase tracking-wider text-accent">For building owners, asset managers & facility teams</p>
         <h1 className="mt-2 max-w-3xl font-display text-5xl font-bold md:text-6xl">
-          Improve comfort and energy performance —{" "}
-          <span className="text-gradient">without replacing your BMS.</span>
+          Improve comfort and energy performance without replacing your BMS.
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
           Adaptive Climate Engine is retrofit-friendly middleware for legacy commercial buildings.
           It works with your existing BMS, helps reduce HVAC energy waste through deadband expansion,
-          and improves tenant comfort with personal comfort devices — pilot-first, low-risk.
+          and improves tenant comfort with personal comfort devices, pilot-first and low-risk.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Button asChild size="lg" className="bg-gradient-cool text-primary-foreground hover:opacity-90">
@@ -144,7 +143,7 @@ export default function Buildings() {
             <h2 className="font-display text-3xl font-bold md:text-4xl">Book a Pilot</h2>
             <p className="mt-4 max-w-md text-muted-foreground">
               Tell us about a building. We will review your details and contact you to discuss
-              pilot suitability — usually within one business day.
+              pilot suitability, usually within one business day.
             </p>
             <ul className="mt-6 space-y-2 text-sm">
               {[
