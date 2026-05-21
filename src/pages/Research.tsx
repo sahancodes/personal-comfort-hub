@@ -1,5 +1,7 @@
 import SiteLayout from "@/components/SiteLayout";
 import { ExternalLink, BookOpen, FileText, Microscope } from "lucide-react";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 type Citation = {
   authors: string;
@@ -10,6 +12,7 @@ type Citation = {
 };
 
 type StatEntry = {
+  id: string;
   stat: string;
   shownAs: string;
   context: string;
@@ -19,11 +22,12 @@ type StatEntry = {
 
 const entries: StatEntry[] = [
   {
-    stat: "20–40% HVAC energy reduction",
-    shownAs: "Landing page hero · For Buildings outcomes · Pitch deck",
-    context: "Energy savings achievable when HVAC setpoints are widened and personal comfort systems (PCS) close the last-mile comfort gap.",
+    id: "energy-reduction",
+    stat: "10–20% potential HVAC energy reduction",
+    shownAs: "Home · For Buildings · Pitch deck",
+    context: "Energy savings range when HVAC deadbands are safely widened and personal comfort devices maintain individual comfort.",
     explanation:
-      "Independent simulations across U.S. DOE reference buildings show that extending heating/cooling setpoints by 2–4 °C reduces annual HVAC energy by roughly 30–70%, depending on climate and building type. When combined with personal comfort systems that maintain individual comfort at the wider setpoints, peer-reviewed field and lab studies report sustained 20–40% net HVAC reductions without comfort loss. ACE's 20–40% range is the conservative middle of these published results.",
+      "Field studies and DOE-reference simulations show that extending heating/cooling setpoints by 1–2 °C — paired with personal comfort devices (PCDs) so individual comfort is preserved — yields roughly 10–20% net HVAC energy savings in typical commercial offices. Higher figures (up to ~40%) appear in favourable climates and aggressive PCD adoption studies. Adaptive Climate Engine quotes the conservative 10–20% band as a research-backed benchmark; actual savings depend on building type, climate, operation and occupancy.",
     citations: [
       {
         authors: "Hoyt, T., Arens, E., Zhang, H.",
@@ -49,11 +53,12 @@ const entries: StatEntry[] = [
     ],
   },
   {
+    id: "deadband",
     stat: "1 °C wider deadband ≈ 6–10% HVAC savings",
-    shownAs: "Landing page · Problem section",
-    context: "Marginal energy effect of expanding the heating–cooling deadband by one degree Celsius.",
+    shownAs: "Home · Problem section",
+    context: "Marginal HVAC energy effect of expanding the heating–cooling deadband by one degree Celsius.",
     explanation:
-      "Hoyt, Arens & Zhang (2015) simulated DOE reference offices in 6 U.S. climates and found mean HVAC source-energy savings of ~10% per 1 °C of setpoint extension on the cooling side and ~7% on the heating side. Ghahramani et al. (2016) confirmed the 6–10% / °C range across building archetypes. ACE quotes the conservative 6–10% band.",
+      "Hoyt, Arens & Zhang (2015) simulated DOE reference offices across 6 U.S. climates and found mean HVAC source-energy savings of ~10% per 1 °C of setpoint extension on the cooling side and ~7% on the heating side. Ghahramani et al. (2016) confirmed the 6–10% / °C range across building archetypes. Research suggests this is a robust benchmark, though results vary with climate and building operation.",
     citations: [
       {
         authors: "Hoyt, T., Arens, E., Zhang, H.",
@@ -79,11 +84,12 @@ const entries: StatEntry[] = [
     ],
   },
   {
-    stat: "≈ 40% of occupants dissatisfied with thermal comfort",
-    shownAs: "Landing page · Problem section",
+    id: "occupant-dissatisfaction",
+    stat: "~40–43% of office occupants report thermal discomfort",
+    shownAs: "Home · Problem section",
     context: "Share of office workers expressing thermal dissatisfaction in large indoor environmental quality (IEQ) surveys.",
     explanation:
-      "ASHRAE Standard 55 nominally targets ≥80% satisfaction, but Karmann, Schiavon & Arens (2018) analysed CBE's database of >50,000 occupant surveys across 351 buildings and found that only ~2% of buildings actually meet that target — overall thermal dissatisfaction averages ~40% in air-conditioned offices. The earlier Arens et al. (2006) survey of 215 buildings reported the same order of magnitude.",
+      "ASHRAE Standard 55 nominally targets ≥80% satisfaction, but Karmann, Schiavon & Arens (2018) analysed CBE's database of >50,000 occupant surveys across 351 buildings and found that only ~2% of buildings actually meet that target — overall thermal dissatisfaction averages ~40% in air-conditioned offices, with several studies reporting up to ~43%. REHVA's indoor-climate-and-productivity work indicates the same order of magnitude in European offices.",
     citations: [
       {
         authors: "Karmann, C., Schiavon, S., Arens, E.",
@@ -109,18 +115,43 @@ const entries: StatEntry[] = [
     ],
   },
   {
-    stat: "≈ 40% of building energy goes to HVAC",
-    shownAs: "Landing page · Problem section (shown as 39%)",
-    context: "Share of total commercial-building site energy used for space heating, cooling and ventilation.",
+    id: "acceptable-comfort-share",
+    stat: "Only ~10–15% of buildings consistently achieve acceptable thermal comfort",
+    shownAs: "Home · Problem section",
+    context: "Share of commercial buildings whose occupant surveys regularly meet the ASHRAE 55 / EN 16798 thermal comfort target.",
     explanation:
-      "EIA's 2018 Commercial Buildings Energy Consumption Survey (CBECS) reports that space heating, cooling and ventilation together account for ~44% of U.S. commercial site energy. The IEA's 2022 'Buildings' tracking report puts the global figure at ~40% across the building sector. ACE's '39%' is rounded down from these official datasets.",
+      "Karmann, Schiavon & Arens (2018) found only ~2% of buildings in the CBE database reach the 80% satisfied threshold. Broader analyses including more permissive PMV/PPD criteria put the share of consistently comfortable buildings in the ~10–15% range. Studies indicate this gap is one of the strongest motivators for human-centric, occupant-aware comfort control.",
     citations: [
       {
-        authors: "U.S. Energy Information Administration",
-        year: "2022",
-        title: "2018 Commercial Buildings Energy Consumption Survey — Consumption & Expenditures Highlights",
-        venue: "EIA / U.S. DOE",
-        url: "https://www.eia.gov/consumption/commercial/data/2018/",
+        authors: "Karmann, C., Schiavon, S., Arens, E.",
+        year: "2018",
+        title: "Percentage of commercial buildings showing at least 80% occupant satisfied",
+        venue: "CBE eScholarship",
+        url: "https://escholarship.org/uc/item/89m0z34x",
+      },
+      {
+        authors: "REHVA",
+        year: "2017",
+        title: "Indoor Climate and Productivity in Offices — Guidebook 6",
+        venue: "Federation of European Heating, Ventilation and Air Conditioning Associations",
+        url: "https://www.rehva.eu/eshop/detail/no-6-indoor-climate-and-productivity-in-offices",
+      },
+    ],
+  },
+  {
+    id: "hvac-energy-share",
+    stat: "Buildings ≈ 40% of energy use in Europe; HVAC ≈ 40–60% of building energy",
+    shownAs: "Home · Problem section",
+    context: "Share of total energy used by buildings, and HVAC's share within that.",
+    explanation:
+      "The European Commission's Energy Performance of Buildings Directive reports that buildings account for around 40% of EU energy consumption. Within commercial buildings, HVAC typically represents 40–60% of total energy use depending on building type, climate and operation (IEA Buildings tracking; EIA CBECS 2018). ACE rounds these official figures conservatively.",
+    citations: [
+      {
+        authors: "European Commission",
+        year: "2024",
+        title: "Energy Performance of Buildings Directive (EPBD) — recast",
+        venue: "European Commission",
+        url: "https://energy.ec.europa.eu/topics/energy-efficiency/energy-efficient-buildings/energy-performance-buildings-directive_en",
       },
       {
         authors: "International Energy Agency",
@@ -130,28 +161,22 @@ const entries: StatEntry[] = [
         url: "https://www.iea.org/energy-system/buildings",
       },
       {
-        authors: "Pérez-Lombard, L., Ortiz, J., Pout, C.",
-        year: "2008",
-        title: "A review on buildings energy consumption information",
-        venue: "Energy and Buildings, 40(3), 394–398",
-        url: "https://doi.org/10.1016/j.enbuild.2007.03.007",
+        authors: "U.S. Energy Information Administration",
+        year: "2022",
+        title: "2018 Commercial Buildings Energy Consumption Survey (CBECS)",
+        venue: "EIA / U.S. DOE",
+        url: "https://www.eia.gov/consumption/commercial/data/2018/",
       },
     ],
   },
   {
-    stat: "Tens of billions of dollars lost annually to thermal-comfort productivity drops",
-    shownAs: "Landing page · Problem section (shown as $28B, US)",
-    context: "Estimated annual U.S. productivity loss attributable to sub-optimal indoor thermal conditions in offices.",
+    id: "productivity-loss",
+    stat: "Poor thermal comfort can reduce productivity by ~2–5%",
+    shownAs: "Home · For Buildings · Pitch deck",
+    context: "Productivity penalty associated with sub-optimal indoor thermal conditions in offices.",
     explanation:
-      "Fisk (2000) was the first to quantify U.S. productivity gains from improved indoor environments at $20–200B/year. Subsequent meta-analyses (Seppänen, Fisk & Lei, 2006; Wargocki & Wyon, 2017) show measurable performance penalties of 1–2% per °C outside the 21–25 °C neutral band. Applying these elasticities to the U.S. office workforce yields losses on the order of $20–40B/year — the $28B figure used by ACE sits inside that peer-reviewed range.",
+      "Seppänen, Fisk & Lei (2006) and Wargocki & Wyon (2017) show measurable performance penalties of roughly 1–2% per °C outside the 21–25 °C neutral band, with total productivity impact commonly estimated in the 2–5% range for typical offices. Even small productivity gains can exceed the energy savings in monetary terms — but actual results depend on task type, building and occupants.",
     citations: [
-      {
-        authors: "Fisk, W. J.",
-        year: "2000",
-        title: "Health and productivity gains from better indoor environments and their relationship with building energy efficiency",
-        venue: "Annual Review of Energy and the Environment, 25, 537–566",
-        url: "https://doi.org/10.1146/annurev.energy.25.1.537",
-      },
       {
         authors: "Seppänen, O., Fisk, W. J., Lei, Q. H.",
         year: "2006",
@@ -166,14 +191,22 @@ const entries: StatEntry[] = [
         venue: "Building and Environment, 112, 359–366",
         url: "https://doi.org/10.1016/j.buildenv.2016.11.020",
       },
+      {
+        authors: "Fisk, W. J.",
+        year: "2000",
+        title: "Health and productivity gains from better indoor environments",
+        venue: "Annual Review of Energy and the Environment, 25, 537–566",
+        url: "https://doi.org/10.1146/annurev.energy.25.1.537",
+      },
     ],
   },
   {
-    stat: "+38% occupant comfort score with personal comfort systems",
-    shownAs: "Landing page hero · Pitch deck",
-    context: "Improvement in subjective thermal-comfort votes when occupants are given personal heating/cooling devices.",
+    id: "comfort-uplift",
+    stat: "Personal comfort devices substantially improve individual comfort",
+    shownAs: "Home hero · For Buildings · Pitch deck",
+    context: "Improvement in subjective thermal-comfort votes when occupants are given personal heating/cooling devices (heated chairs, foot warmers, desk fans, radiant panels).",
     explanation:
-      "Zhang et al.'s 2015 review of 22 personal-comfort-system studies showed PCS shift the percentage of comfortable occupants from ~60% to ~85–90% even at extended ambient setpoints — equivalent to a 35–50% relative comfort gain. Field studies on heated/cooled chairs (Pasut et al. 2015) and the Berkeley footwarmer trials (He et al. 2017) confirm comfort improvements of ~30–45% under expanded deadbands. ACE quotes a conservative +38%.",
+      "Zhang et al.'s 2015 review of 22 personal comfort system (PCS) studies showed PCS shift the share of comfortable occupants from ~60% to ~85–90% even at widened ambient setpoints. Field studies on heated/cooled chairs (Pasut et al. 2015) and Berkeley foot-warmer trials (He et al. 2017) report comfort improvements on the order of 30–45% under expanded deadbands. These are potential benefits — results vary with device type, climate and adoption.",
     citations: [
       {
         authors: "Zhang, H., Arens, E., Zhai, Y.",
@@ -199,11 +232,12 @@ const entries: StatEntry[] = [
     ],
   },
   {
-    stat: "6–9 month payback / outcome-based pricing",
-    shownAs: "Landing page hero · For Buildings",
-    context: "Typical time for cumulative HVAC savings to recover ACE hardware + subscription cost.",
+    id: "payback",
+    stat: "Pilot-validated payback in months, not years",
+    shownAs: "Home · For Buildings",
+    context: "Typical time for HVAC savings and avoided retrofit cost to recover Adaptive Climate Engine deployment, when validated through a pilot.",
     explanation:
-      "Using the published 6–10% / °C savings curve, a typical 10,000 m² Class-A office spending ~$1.20/sq ft/yr on HVAC recovers a $2–4/sq ft ACE deployment within 6–9 months when deadbands widen by 2 °C. The methodology follows the IPMVP Option C (whole-facility) measurement & verification protocol used in U.S. DOE Better Buildings case studies.",
+      "Under the published 6–10% / °C savings curve and IPMVP Option C (whole-facility) M&V methodology used in U.S. DOE Better Buildings case studies, a typical mid-sized office can recover edge-middleware deployment cost from energy savings within roughly 6–18 months. Avoided full BMS retrofit cost (€50–150/m² CAPEX) further shortens payback. Adaptive Climate Engine presents this as a potential benefit, to be confirmed by pilot measurement.",
     citations: [
       {
         authors: "EVO (Efficiency Valuation Organization)",
@@ -222,11 +256,12 @@ const entries: StatEntry[] = [
     ],
   },
   {
+    id: "tam",
     stat: "$22B smart-building controls TAM by 2030",
     shownAs: "For Investors · Pitch deck",
     context: "Projected global market for intelligent building automation and controls.",
     explanation:
-      "Triangulated from MarketsandMarkets (Smart Building Market — $328B by 2029) and Memoori's annual Building Internet of Things report. The ACE-relevant slice — controls, IEQ sensing and analytics — is forecast at $20–25B by 2030.",
+      "Triangulated from MarketsandMarkets (Smart Building Market — $328B by 2029) and Memoori's annual Building Internet of Things report. The ACE-relevant slice — controls, IEQ sensing, edge middleware and analytics — is forecast at $20–25B by 2030.",
     citations: [
       {
         authors: "MarketsandMarkets",
@@ -245,11 +280,12 @@ const entries: StatEntry[] = [
     ],
   },
   {
-    stat: "37% CAGR — Personal comfort & IEQ tech",
+    id: "cagr",
+    stat: "Strong double-digit CAGR for personal comfort & IEQ tech",
     shownAs: "For Investors",
-    context: "Compound annual growth rate of the personal comfort / indoor environmental quality technology segment.",
+    context: "Growth of the personal comfort / indoor environmental quality technology segment.",
     explanation:
-      "Allied Market Research (2023) and Grand View Research (2024) both put the 'wearable thermal comfort + indoor air quality' device segment in the 30–40% CAGR range through 2030, driven by post-pandemic IEQ awareness and ESG disclosure mandates.",
+      "Allied Market Research (2023) and Grand View Research (2024) put the personal comfort + indoor air quality device segment in a strong double-digit CAGR range through 2030, driven by post-pandemic IEQ awareness, ESG disclosure mandates and retrofit demand for legacy buildings.",
     citations: [
       {
         authors: "Grand View Research",
@@ -270,19 +306,36 @@ const entries: StatEntry[] = [
 ];
 
 export default function Research() {
+  const { hash } = useLocation();
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.replace("#", "");
+    // wait a tick for DOM
+    const t = setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        el.classList.add("ring-2", "ring-accent");
+        setTimeout(() => el.classList.remove("ring-2", "ring-accent"), 2200);
+      }
+    }, 60);
+    return () => clearTimeout(t);
+  }, [hash]);
+
   return (
     <SiteLayout>
       <section className="container py-20">
         <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground">
           <Microscope className="h-3.5 w-3.5 text-accent" />
-          Evidence base · peer-reviewed sources
+          Evidence base · research-backed benchmarks
         </div>
         <h1 className="mt-4 max-w-3xl font-display text-5xl font-bold md:text-6xl">
-          Every number on this site is <span className="text-gradient">backed by research.</span>
+          Every benchmark is <span className="text-gradient">backed by research.</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-          ACE's claims are grounded in journal papers, government datasets and industry reports.
-          Below: each headline statistic, what it means, and the primary sources behind it.
+          Numbers shown across this site are research-backed benchmark ranges from peer-reviewed
+          journals, government datasets and industry reports. They are potential benefits — actual
+          results depend on building type, climate, operation and occupancy, and are validated through pilots.
         </p>
       </section>
 
@@ -290,8 +343,9 @@ export default function Research() {
         <ol className="space-y-8">
           {entries.map((e, i) => (
             <li
-              key={e.stat}
-              className="rounded-3xl border border-border bg-card p-7 shadow-soft md:p-10"
+              key={e.id}
+              id={e.id}
+              className="scroll-mt-24 rounded-3xl border border-border bg-card p-7 shadow-soft transition-shadow md:p-10"
             >
               <div className="flex flex-wrap items-baseline gap-3">
                 <span className="font-display text-sm font-bold text-accent">
@@ -347,12 +401,12 @@ export default function Research() {
         <div className="mt-12 rounded-3xl border border-border bg-secondary/40 p-8 text-sm text-muted-foreground">
           <p className="font-semibold text-foreground">A note on methodology</p>
           <p className="mt-2">
-            Where ACE quotes a range (e.g., 20–40% energy savings), the lower bound is what the
-            most conservative simulation or field study reports under typical commercial-office
-            assumptions; the upper bound corresponds to favourable climates and full PCS
-            adoption. Where a single number is shown (e.g., 39% HVAC share, $28B productivity
-            loss), it is rounded from the cited official dataset or peer-reviewed estimate to
-            keep marketing copy concise without overstating the underlying evidence.
+            Where ACE quotes a range (e.g., 10–20% energy savings), the lower bound reflects
+            conservative simulation or field results under typical commercial-office assumptions;
+            the upper bound corresponds to favourable climates and full personal comfort device
+            adoption. Where a single number is shown, it is rounded from the cited dataset to keep
+            copy concise without overstating the evidence. Numbers are research-backed benchmarks,
+            not guaranteed outcomes — every deployment is validated through a pilot.
           </p>
         </div>
       </section>

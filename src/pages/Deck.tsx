@@ -163,9 +163,9 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <h2 className="mt-3 font-display text-6xl font-bold">Sense. Learn. Adapt.</h2>
           <div className="mt-14 grid grid-cols-3 gap-8">
             {[
-              { n: "01", i: Activity, t: "Sense", d: "Sensor mesh + opt-in wearables capture temperature, humidity, CO₂, and personal thermal state." },
-              { n: "02", i: Brain, t: "Learn", d: "Bayesian model builds a comfort fingerprint per occupant from low-friction in-app feedback." },
-              { n: "03", i: Workflow, t: "Adapt", d: "ACE widens BMS deadbands and triggers personal devices only where needed." },
+              { n: "01", i: Activity, t: "Sense", d: "Zone sensors + occupant feedback ('too cold / too warm / OK') capture temperature, humidity, CO₂ and the human signal." },
+              { n: "02", i: Brain, t: "Decide locally", d: "Edge AI learns per-zone and per-occupant comfort preference — no cloud latency." },
+              { n: "03", i: Workflow, t: "Act", d: "Advisory setpoints widen BMS deadbands while personal comfort devices (fans, heated chairs, radiant panels, foot warmers) close the gap." },
             ].map((s) => (
               <div key={s.n} className="rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-8">
                 <div className="font-display text-4xl font-bold text-accent">{s.n}</div>
@@ -191,7 +191,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <div className="mt-12 grid grid-cols-3 gap-8">
             {[
               { i: Plug, t: "ACE Gateway", d: "Edge appliance speaks every major BMS protocol. Runs comfort models locally — no cloud dependency." },
-              { i: Thermometer, t: "ACE Sense", d: "Battery-powered desk pucks + opt-in wearable signals. Mesh installs in days." },
+              { i: Thermometer, t: "ACE Sense", d: "Battery-powered desk/zone sensors + an opt-in occupant feedback app. Mesh installs in days." },
               { i: Database, t: "ACE Console", d: "Building dashboard for FMs. Live comfort heatmap, energy savings, and ESG-ready exports." },
             ].map((c) => (
               <div key={c.t} className="rounded-2xl border border-border bg-gradient-surface p-8 shadow-soft">
