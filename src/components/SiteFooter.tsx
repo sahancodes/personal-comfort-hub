@@ -5,17 +5,14 @@ export default function SiteFooter() {
     <footer className="border-t border-border/60 bg-secondary/30">
       <div className="container grid gap-8 py-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2 font-display font-bold text-lg">
-            <img
-              src="/ace-icon.svg"
-              alt="Adaptive Climate Engine logo"
-              className="h-9 w-9 rounded-lg"
-            />
-            ACE
-          </div>
-          <p className="mt-3 max-w-sm text-sm text-muted-foreground">
-            Adaptive Climate Engine: personal comfort for buildings with a brain.
-            Plug into any BMS, delight every occupant, cut HVAC energy.
+          <img
+            src="/ace-logo-primary.svg"
+            alt="Adaptive Climate Engine"
+            className="h-auto w-full max-w-[340px]"
+          />
+          <p className="mt-4 max-w-sm text-sm text-muted-foreground">
+            Edge-based human-centric BMS middleware for legacy buildings. Personal comfort,
+            smarter buildings and lower HVAC energy waste.
           </p>
         </div>
         <div>
@@ -30,7 +27,7 @@ export default function SiteFooter() {
           <h4 className="text-sm font-semibold">Company</h4>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
             <li><Link to="/investors" className="hover:text-foreground">Investors</Link></li>
-            <li><a href="mailto:hello@ace.energy" className="hover:text-foreground">Contact</a></li>
+            <li><a href="mailto:hello@adaptiveclimate.nl" className="hover:text-foreground">Contact</a></li>
           </ul>
         </div>
       </div>
