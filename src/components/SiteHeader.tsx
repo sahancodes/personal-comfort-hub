@@ -1,6 +1,6 @@
 import { Link, NavLink as RouterNavLink } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X, Wind } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -19,9 +19,11 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-display font-bold text-lg">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-cool text-primary-foreground shadow-glow">
-            <Wind className="h-5 w-5" />
-          </span>
+          <img
+            src="/ace-icon.svg"
+            alt="Adaptive Climate Engine logo"
+            className="h-9 w-9 rounded-lg shadow-glow"
+          />
           <span>ACE</span>
           <span className="hidden text-xs font-medium text-muted-foreground sm:inline">Adaptive Climate Engine</span>
         </Link>
