@@ -20,9 +20,9 @@ export default function SiteHeader() {
       <div className="container flex min-h-24 items-center justify-between gap-5 py-3">
         <Link to="/" className="flex shrink-0 items-center overflow-visible" aria-label="Adaptive Climate Engine home">
           <img
-            src="/ace-logo-horizontal.png"
+            src="/brand/ace-logo-horizontal.svg?v=9"
             alt="Adaptive Climate Engine"
-            className="block h-auto w-[280px] max-w-[58vw] object-contain sm:w-[360px] lg:w-[420px]"
+            className="block h-auto w-[240px] max-w-[58vw] object-contain sm:w-[300px] lg:w-[340px]"
           />
         </Link>
 
