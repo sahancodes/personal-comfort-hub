@@ -30,7 +30,6 @@ import {
 } from "lucide-react";
 
 const logo = "/ace-logo-horizontal.png";
-
 type IconType = typeof Activity;
 
 function SlideShell({ children }: { children: ReactNode }) {
@@ -64,13 +63,11 @@ function SlideShell({ children }: { children: ReactNode }) {
   );
 }
 
-function DeckLogo({ light = false }: { light?: boolean }) {
+function DeckLogo({ variant = "standard" }: { variant?: "standard" | "large" }) {
   return (
-    <img
-      src={logo}
-      alt="Adaptive Climate Engine"
-      className={`h-12 w-auto rounded-lg px-3 py-2 object-contain ${light ? "bg-white/95" : "bg-white/90 shadow-soft"}`}
-    />
+    <div className={`${variant === "large" ? "w-[340px]" : "w-[220px]"} rounded-xl bg-white/95 px-4 py-3 shadow-soft`}>
+      <img src={logo} alt="Adaptive Climate Engine" className="block h-auto w-full object-contain" />
+    </div>
   );
 }
 
@@ -80,51 +77,53 @@ function SlideFrame({ children, dark = false }: { children: ReactNode; dark?: bo
       <div className="absolute -right-32 -top-32 h-[430px] w-[430px] rounded-full bg-accent/20 blur-3xl" />
       <div className="absolute -bottom-36 -left-36 h-[430px] w-[430px] rounded-full bg-primary-glow/15 blur-3xl" />
       <header className="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-20 pt-10">
-        <DeckLogo light={dark} />
+        <DeckLogo />
         <div className={`text-sm font-medium ${dark ? "text-white/60" : "text-muted-foreground"}`}>Adaptive Climate Engine · Pitch 2026</div>
       </header>
-      <main className="relative z-10 h-full px-24 pb-20 pt-32">{children}</main>
+      <main className="relative z-10 flex h-full items-center px-24 pb-16 pt-32">
+        <div className="mx-auto w-full max-w-[1500px]">{children}</div>
+      </main>
     </div>
   );
 }
 
-function Kicker({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return <div className={`text-base font-bold uppercase tracking-[0.22em] ${light ? "text-accent" : "text-accent"}`}>{children}</div>;
+function Kicker({ children }: { children: ReactNode }) {
+  return <div className="text-[16px] font-bold uppercase tracking-[0.22em] text-accent">{children}</div>;
 }
 
 function SlideTitle({ children, light = false, narrow = false }: { children: ReactNode; light?: boolean; narrow?: boolean }) {
   return (
-    <h2 className={`mt-3 font-display text-[54px] font-bold leading-[1.06] tracking-tight ${narrow ? "max-w-[1040px]" : "max-w-[1320px]"} ${light ? "text-white" : "text-foreground"}`}>
+    <h2 className={`mt-3 font-display text-[52px] font-bold leading-[1.08] tracking-tight ${narrow ? "max-w-[980px]" : "max-w-[1320px]"} ${light ? "text-white" : "text-foreground"}`}>
       {children}
     </h2>
   );
 }
 
 function SlideText({ children, light = false, narrow = false }: { children: ReactNode; light?: boolean; narrow?: boolean }) {
-  return <p className={`mt-5 text-[25px] leading-snug ${narrow ? "max-w-[900px]" : "max-w-[1120px]"} ${light ? "text-white/78" : "text-muted-foreground"}`}>{children}</p>;
+  return <p className={`mt-5 text-[24px] leading-snug ${narrow ? "max-w-[880px]" : "max-w-[1120px]"} ${light ? "text-white/78" : "text-muted-foreground"}`}>{children}</p>;
 }
 
 function SourceNote({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return <p className={`mt-6 text-[13px] leading-relaxed ${light ? "text-white/55" : "text-muted-foreground"}`}>{children}</p>;
+  return <p className={`mt-5 text-[13px] leading-relaxed ${light ? "text-white/55" : "text-muted-foreground"}`}>{children}</p>;
 }
 
 function MetricCard({ value, label, source, dark = false }: { value: string; label: string; source?: string; dark?: boolean }) {
   return (
     <div className={`min-h-[190px] rounded-2xl border p-7 shadow-soft ${dark ? "border-white/15 bg-white/8" : "border-border bg-card"}`}>
-      <div className="font-display text-[50px] font-bold leading-none text-gradient">{value}</div>
-      <p className={`mt-4 text-[20px] leading-snug ${dark ? "text-white/78" : "text-muted-foreground"}`}>{label}</p>
+      <div className="font-display text-[48px] font-bold leading-none text-gradient">{value}</div>
+      <p className={`mt-4 text-[19px] leading-snug ${dark ? "text-white/78" : "text-muted-foreground"}`}>{label}</p>
       {source && <p className={`mt-4 text-[12px] ${dark ? "text-white/45" : "text-muted-foreground"}`}>{source}</p>}
     </div>
   );
 }
 
-function FeatureCard({ icon: Icon, title, text, dark = false }: { icon: IconType; title: string; text: string; dark?: boolean }) {
+function FeatureCard({ icon: Icon, title, text, dark = false, tall = false }: { icon: IconType; title: string; text: string; dark?: boolean; tall?: boolean }) {
   return (
-    <div className={`min-h-[220px] rounded-2xl border p-7 shadow-soft ${dark ? "border-white/15 bg-white/8" : "border-border bg-card"}`}>
+    <div className={`${tall ? "min-h-[250px]" : "min-h-[215px]"} rounded-2xl border p-7 shadow-soft ${dark ? "border-white/15 bg-white/8" : "border-border bg-card"}`}>
       <div className={`mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl ${dark ? "bg-accent text-accent-foreground" : "bg-accent-soft text-accent"}`}>
         <Icon className="h-6 w-6" />
       </div>
-      <h3 className={`font-display text-[26px] font-semibold leading-tight ${dark ? "text-white" : "text-foreground"}`}>{title}</h3>
+      <h3 className={`font-display text-[25px] font-semibold leading-tight ${dark ? "text-white" : "text-foreground"}`}>{title}</h3>
       <p className={`mt-3 text-[18px] leading-snug ${dark ? "text-white/75" : "text-muted-foreground"}`}>{text}</p>
     </div>
   );
@@ -134,13 +133,39 @@ function StepCard({ n, icon: Icon, title, text, dark = false }: { n: string; ico
   return (
     <div className={`rounded-2xl border p-7 ${dark ? "border-white/15 bg-white/8" : "border-border bg-card"}`}>
       <div className="flex items-center justify-between">
-        <div className="font-display text-[34px] font-bold text-accent">{n}</div>
+        <div className="font-display text-[33px] font-bold text-accent">{n}</div>
         <div className={`grid h-12 w-12 place-items-center rounded-xl ${dark ? "bg-accent text-accent-foreground" : "bg-accent-soft text-accent"}`}>
           <Icon className="h-6 w-6" />
         </div>
       </div>
-      <h3 className={`mt-5 font-display text-[27px] font-semibold ${dark ? "text-white" : "text-foreground"}`}>{title}</h3>
+      <h3 className={`mt-5 font-display text-[26px] font-semibold ${dark ? "text-white" : "text-foreground"}`}>{title}</h3>
       <p className={`mt-3 text-[18px] leading-snug ${dark ? "text-white/76" : "text-muted-foreground"}`}>{text}</p>
+    </div>
+  );
+}
+
+function ArchitectureBlock({ title, text, icon: Icon }: { title: string; text: string; icon: IconType }) {
+  return (
+    <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
+      <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent">
+        <Icon className="h-6 w-6" />
+      </div>
+      <h3 className="mt-4 font-display text-[24px] font-semibold">{title}</h3>
+      <p className="mt-2 text-[17px] leading-snug text-muted-foreground">{text}</p>
+    </div>
+  );
+}
+
+function Milestone({ step, title, points }: { step: string; title: string; points: string[] }) {
+  return (
+    <div className="relative min-h-[250px] rounded-2xl border border-border bg-card p-6 shadow-soft">
+      <div className="flex items-center gap-3">
+        <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-cool font-display text-lg font-bold text-primary-foreground">{step}</span>
+        <h3 className="font-display text-[23px] font-semibold leading-tight">{title}</h3>
+      </div>
+      <ul className="mt-4 space-y-2 text-[16px] leading-snug text-muted-foreground">
+        {points.map((p) => <li key={p}>• {p}</li>)}
+      </ul>
     </div>
   );
 }
@@ -153,7 +178,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
         <div className="absolute -right-44 -top-44 h-[620px] w-[620px] rounded-full bg-accent/30 blur-3xl" />
         <div className="absolute -bottom-44 -left-44 h-[560px] w-[560px] rounded-full bg-primary-glow/30 blur-3xl" />
         <div className="relative z-10 flex h-full flex-col justify-between px-28 py-24">
-          <DeckLogo light />
+          <DeckLogo variant="large" />
           <section>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/8 px-4 py-2 text-sm font-semibold">
               <Sparkles className="h-4 w-4 text-accent" /> Personal comfort for smarter buildings
@@ -177,7 +202,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Problem",
     render: () => (
       <SlideFrame>
-        <div className="grid h-full grid-cols-[0.92fr_1.08fr] items-center gap-14">
+        <div className="grid grid-cols-[0.9fr_1.1fr] items-center gap-14">
           <section>
             <Kicker>The problem</Kicker>
             <SlideTitle narrow>Legacy BMS controls zones, not people.</SlideTitle>
@@ -199,17 +224,15 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Why now",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Why now</Kicker>
-          <SlideTitle>Energy rules, costs and tenant expectations are pushing retrofit modernization.</SlideTitle>
-          <div className="mt-10 grid grid-cols-4 gap-5">
-            <FeatureCard icon={Globe2} title="EU pressure" text="Energy performance rules are raising expectations for non-residential buildings." />
-            <FeatureCard icon={Euro} title="Operating costs" text="Energy volatility keeps HVAC efficiency high on the building-owner agenda." />
-            <FeatureCard icon={Users} title="Tenant experience" text="Hybrid work makes comfort and workplace quality harder to ignore." />
-            <FeatureCard icon={Building2} title="Retrofit reality" text="Most existing buildings need practical upgrades, not full replacement." />
-          </div>
-          <SourceNote>Source anchor: EU EPBD recast / Reuters, 2024; building renovation agenda and energy-performance pressure.</SourceNote>
-        </section>
+        <Kicker>Why now</Kicker>
+        <SlideTitle>Energy rules, costs and tenant expectations are pushing retrofit modernization.</SlideTitle>
+        <div className="mt-9 grid grid-cols-2 gap-6">
+          <FeatureCard icon={Globe2} title="EU pressure" text="Buildings represent roughly 40% of EU energy use, making efficiency upgrades a policy priority." />
+          <FeatureCard icon={Euro} title="Operating costs" text="Energy volatility keeps HVAC efficiency high on the building-owner agenda." />
+          <FeatureCard icon={Users} title="Tenant experience" text="Hybrid work makes comfort and workplace quality harder to ignore." />
+          <FeatureCard icon={Building2} title="Retrofit reality" text="Most existing buildings need practical upgrades, not full BMS replacement." />
+        </div>
+        <SourceNote>Source anchor: EU EPBD recast / Reuters, 2024; building renovation agenda and energy-performance pressure.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -217,19 +240,17 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Market opportunity",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Market opportunity</Kicker>
-          <SlideTitle>Dutch office buildings are the first beachhead.</SlideTitle>
-          <div className="mt-10 grid grid-cols-4 gap-5">
-            <FeatureCard icon={Target} title="Initial segment" text="Medium and large Dutch offices with existing BMS infrastructure." />
-            <FeatureCard icon={Users} title="Buyer group" text="Building owners, facility managers and technical service providers." />
-            <FeatureCard icon={SearchCheck} title="Entry motion" text="Start with one floor or zone, then expand after validation." />
-            <FeatureCard icon={CircleDollarSign} title="Revenue logic" text="Pilot fee, integration fee and annual building subscription." />
-          </div>
-          <div className="mt-8 rounded-2xl border border-border bg-secondary/45 p-6 text-[20px] text-muted-foreground">
-            <span className="font-semibold text-foreground">Conservative framing:</span> focus first on BMS-enabled offices where comfort complaints and energy performance both matter.
-          </div>
-        </section>
+        <Kicker>Market opportunity</Kicker>
+        <SlideTitle>Dutch BMS-enabled offices are the first beachhead.</SlideTitle>
+        <div className="mt-9 grid grid-cols-2 gap-6">
+          <MetricCard value="200+" label="qualified target accounts contacted per year" source="Business-plan assumption" />
+          <MetricCard value="~2%" label="conservative account-to-deployment conversion target" source="Business-plan assumption" />
+          <MetricCard value="€15k" label="indicative paid pilot entry point" source="Business-plan assumption" />
+          <MetricCard value="€15k ARR" label="target annual subscription per building after validation" source="Business-plan assumption" />
+        </div>
+        <div className="mt-7 rounded-2xl border border-border bg-secondary/45 p-6 text-[19px] leading-snug text-muted-foreground">
+          <span className="font-semibold text-foreground">Beachhead logic:</span> focus first on medium-large Dutch offices with existing BMS infrastructure, comfort pressure and energy-performance motivation.
+        </div>
       </SlideFrame>
     ),
   },
@@ -237,20 +258,25 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Solution",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Solution</Kicker>
-          <SlideTitle>ACE adds the human-centric comfort layer missing from existing BMS.</SlideTitle>
-          <SlideText>
-            A retrofit layer that connects building data, occupant feedback and edge comfort intelligence into practical comfort support.
-          </SlideText>
-          <div className="mt-10 grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-4">
-            <FeatureCard icon={Database} title="Building data + feedback" text="Environmental signals and occupant comfort input." />
-            <div className="flex items-center text-4xl text-accent">→</div>
-            <FeatureCard icon={Brain} title="Edge comfort intelligence" text="Local evaluation close to building systems." />
-            <div className="flex items-center text-4xl text-accent">→</div>
-            <FeatureCard icon={Workflow} title="Comfort support" text="Localized comfort plus BMS/HVAC advisory support." />
+        <Kicker>Solution</Kicker>
+        <SlideTitle>ACE adds the human-centric comfort layer missing from existing BMS.</SlideTitle>
+        <div className="mt-9 rounded-3xl border border-border bg-secondary/35 p-7 shadow-soft">
+          <div className="grid grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-5">
+            <ArchitectureBlock icon={Database} title="Building data + feedback" text="Environmental signals and occupant comfort input." />
+            <div className="flex items-center text-4xl font-bold text-accent">→</div>
+            <ArchitectureBlock icon={Brain} title="ACE edge layer" text="Local comfort intelligence near the automation layer." />
+            <div className="flex items-center text-4xl font-bold text-accent">→</div>
+            <div className="grid gap-4">
+              <ArchitectureBlock icon={Fan} title="Localized comfort" text="Compatible personal comfort devices." />
+              <ArchitectureBlock icon={Gauge} title="BMS/HVAC advisory" text="High-level comfort and energy recommendations." />
+            </div>
           </div>
-        </section>
+          <div className="mt-5 grid grid-cols-3 gap-4 text-center text-[15px] text-muted-foreground">
+            <div className="rounded-xl border border-border bg-card px-4 py-3">SCADA / supervisory layer</div>
+            <div className="rounded-xl border border-accent/40 bg-accent-soft/40 px-4 py-3">Building automation layer</div>
+            <div className="rounded-xl border border-border bg-card px-4 py-3">Field / occupant environment</div>
+          </div>
+        </div>
       </SlideFrame>
     ),
   },
@@ -258,15 +284,13 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "How it works",
     render: () => (
       <SlideFrame dark>
-        <section className="pt-8">
-          <Kicker light>How it works</Kicker>
-          <SlideTitle light>Sense. Decide locally. Support comfort.</SlideTitle>
-          <div className="mt-12 grid grid-cols-3 gap-7">
-            <StepCard dark n="01" icon={Activity} title="Sense" text="Building data and occupant feedback create a clearer view of comfort." />
-            <StepCard dark n="02" icon={Cpu} title="Decide locally" text="Edge-based comfort intelligence evaluates local conditions near automation systems." />
-            <StepCard dark n="03" icon={Fan} title="Support comfort" text="ACE supports personal comfort devices and BMS/HVAC advisory recommendations." />
-          </div>
-        </section>
+        <Kicker>How it works</Kicker>
+        <SlideTitle light>Sense. Decide locally. Support comfort.</SlideTitle>
+        <div className="mt-12 grid grid-cols-3 gap-7">
+          <StepCard dark n="01" icon={Activity} title="Sense" text="Building data and occupant feedback create a clearer view of comfort." />
+          <StepCard dark n="02" icon={Cpu} title="Decide locally" text="Edge-based comfort intelligence evaluates local conditions near automation systems." />
+          <StepCard dark n="03" icon={Fan} title="Support comfort" text="ACE supports personal comfort devices and BMS/HVAC advisory recommendations." />
+        </div>
       </SlideFrame>
     ),
   },
@@ -274,16 +298,14 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Differentiation",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Why ACE is different</Kicker>
-          <SlideTitle>Not a dashboard. Not a full BMS replacement.</SlideTitle>
-          <div className="mt-10 grid grid-cols-4 gap-5">
-            <FeatureCard icon={Building2} title="Traditional BMS" text="Zone-based control and fixed operational logic." />
-            <FeatureCard icon={BarChart3} title="SCADA dashboard" text="Monitoring, reporting and operational visibility." />
-            <FeatureCard icon={LineChart} title="Cloud analytics" text="Portfolio insights, benchmarking and reporting." />
-            <FeatureCard icon={Sparkles} title="ACE" text="Edge-based, human-centric comfort support alongside existing BMS." />
-          </div>
-        </section>
+        <Kicker>Why ACE is different</Kicker>
+        <SlideTitle>Not a dashboard. Not a full BMS replacement.</SlideTitle>
+        <div className="mt-9 grid grid-cols-2 gap-6">
+          <FeatureCard icon={Building2} title="Traditional BMS" text="Zone-based control and fixed operational logic." />
+          <FeatureCard icon={BarChart3} title="SCADA dashboard" text="Monitoring, reporting and operational visibility." />
+          <FeatureCard icon={LineChart} title="Cloud analytics" text="Portfolio insights, benchmarking and reporting." />
+          <FeatureCard icon={Sparkles} title="ACE" text="Edge-based, human-centric comfort support alongside existing BMS." />
+        </div>
       </SlideFrame>
     ),
   },
@@ -291,18 +313,16 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Evidence base",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Evidence base</Kicker>
-          <SlideTitle>The logic is research-backed. The product will be pilot-validated.</SlideTitle>
-          <div className="mt-10 grid grid-cols-3 gap-6">
-            <FeatureCard icon={Thermometer} title="Comfort gap" text="Personal comfort systems can bridge centralized HVAC and individual comfort needs." />
-            <FeatureCard icon={Leaf} title="Energy potential" text="Smart and adaptive HVAC control research indicates significant saving potential." />
-            <FeatureCard icon={Gauge} title="Flexible operation" text="Occupant-centric and zone-level flexibility are credible smart-building directions." />
-          </div>
-          <SourceNote>
-            Source anchors: Kalaimani et al., Personal Comfort Systems, 2017; HVAC optimization literature, 2023. ACE results will be measured during pilots.
-          </SourceNote>
-        </section>
+        <Kicker>Evidence base</Kicker>
+        <SlideTitle>The logic is research-backed. The product will be pilot-validated.</SlideTitle>
+        <div className="mt-9 grid grid-cols-3 gap-6">
+          <FeatureCard tall icon={Thermometer} title="Comfort gap" text="Personal comfort systems can bridge centralized HVAC and individual comfort needs." />
+          <FeatureCard tall icon={Leaf} title="Energy potential" text="Smart and adaptive HVAC control research indicates significant saving potential." />
+          <FeatureCard tall icon={Gauge} title="Flexible operation" text="Occupant-centric and zone-level flexibility are credible smart-building directions." />
+        </div>
+        <SourceNote>
+          Source anchors: Personal Comfort Systems research; HVAC optimization literature, 2023. ACE results will be measured during pilots.
+        </SourceNote>
       </SlideFrame>
     ),
   },
@@ -310,18 +330,16 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Business model",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Business model</Kicker>
-          <SlideTitle>Pilot fee + integration fee + annual subscription.</SlideTitle>
-          <div className="mt-10 grid grid-cols-3 gap-6">
-            <FeatureCard icon={Target} title="Paid pilot" text="Validate comfort, operational feasibility and energy-saving potential." />
-            <FeatureCard icon={Euro} title="Integration fee" text="Edge hub, sensors, selected devices, integration support and commissioning." />
-            <FeatureCard icon={Database} title="Annual subscription" text="Software, analytics, reporting, support and optimization services." />
-          </div>
-          <div className="mt-8 rounded-2xl border border-border bg-secondary/45 p-6 text-[20px] text-muted-foreground">
-            <span className="font-semibold text-foreground">Optional later:</span> performance-based component after measured pilot evidence.
-          </div>
-        </section>
+        <Kicker>Business model</Kicker>
+        <SlideTitle>Validate → convert → expand.</SlideTitle>
+        <div className="mt-9 grid grid-cols-3 gap-6">
+          <FeatureCard icon={Target} title="Paid pilot" text="Validate comfort, operational feasibility and energy-saving potential." />
+          <FeatureCard icon={Euro} title="Integration fee" text="Edge hub, sensors, selected devices, integration support and commissioning." />
+          <FeatureCard icon={Database} title="Annual subscription" text="Software, analytics, reporting, support and optimization services." />
+        </div>
+        <div className="mt-7 rounded-2xl border border-border bg-secondary/45 p-6 text-[20px] text-muted-foreground">
+          <span className="font-semibold text-foreground">Commercial logic:</span> begin with a paid pilot, convert validated buildings into subscriptions and expand across portfolios.
+        </div>
       </SlideFrame>
     ),
   },
@@ -329,16 +347,15 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Go-to-market",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Go-to-market</Kicker>
-          <SlideTitle>Start small, validate, then scale through partners.</SlideTitle>
-          <div className="mt-10 grid grid-cols-4 gap-5">
-            <StepCard n="01" icon={SearchCheck} title="Find pilot" text="Dutch office floor or zone with existing BMS." />
-            <StepCard n="02" icon={Plug} title="Deploy" text="Set up a controlled pilot with facility-team input." />
-            <StepCard n="03" icon={LineChart} title="Measure" text="Assess comfort, feasibility and energy potential." />
-            <StepCard n="04" icon={Handshake} title="Convert" text="Move validated pilots into subscriptions." />
-          </div>
-        </section>
+        <Kicker>Go-to-market</Kicker>
+        <SlideTitle>Investor logic: small pilots can become recurring building revenue.</SlideTitle>
+        <div className="mt-9 grid grid-cols-2 gap-6">
+          <FeatureCard icon={SearchCheck} title="Pilot wedge" text="Start with one office floor or zone to reduce buyer risk." />
+          <FeatureCard icon={Plug} title="Partner channel" text="Work through BMS/HVAC service providers and facility teams." />
+          <FeatureCard icon={LineChart} title="Measured proof" text="Use pilot data to build a building-level business case." />
+          <FeatureCard icon={Handshake} title="Subscription conversion" text="Convert validated pilots into recurring software and support revenue." />
+        </div>
+        <SourceNote>Market data anchors: EU building energy pressure; Dutch office market reports; smart building market reports; business-plan assumptions.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -346,15 +363,18 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Roadmap",
     render: () => (
       <SlideFrame dark>
-        <section className="pt-8">
-          <Kicker light>Roadmap</Kicker>
-          <SlideTitle light>Build, validate, then scale cautiously.</SlideTitle>
-          <div className="mt-12 grid grid-cols-3 gap-7">
-            <StepCard dark n="Y1" icon={Cpu} title="MVP + initial pilots" text="Complete MVP integration and validate first Dutch office pilots." />
-            <StepCard dark n="Y2" icon={TrendingUp} title="Early deployments" text="Convert validated pilots and standardize installation workflows." />
-            <StepCard dark n="Y3" icon={Building2} title="Cautious scale-up" text="Scale with partners, templates and support processes." />
+        <Kicker>Roadmap</Kicker>
+        <SlideTitle light>Build, validate, repeat, then scale.</SlideTitle>
+        <div className="relative mt-10">
+          <div className="absolute left-10 right-10 top-[38px] h-1 rounded-full bg-white/20" />
+          <div className="grid grid-cols-5 gap-4">
+            <Milestone step="1" title="MVP completion" points={["Edge hub setup", "Core workflow", "Measurement framework"]} />
+            <Milestone step="2" title="Pilot 1" points={["One office zone", "Comfort feedback", "Measured validation"]} />
+            <Milestone step="3" title="Pilot 2" points={["Repeatability", "Deployment checklist", "Business case"]} />
+            <Milestone step="4" title="Early deployments" points={["Convert pilots", "Partner workflow", "Subscription model"]} />
+            <Milestone step="5" title="Cautious scale-up" points={["Templates", "Service partners", "Support process"]} />
           </div>
-        </section>
+        </div>
       </SlideFrame>
     ),
   },
@@ -362,16 +382,14 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "Current status",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>Current status</Kicker>
-          <SlideTitle>Pre-commercial validation stage.</SlideTitle>
-          <div className="mt-10 grid grid-cols-2 gap-6">
-            <FeatureCard icon={ShieldCheck} title="Technical foundation" text="Smart buildings, personal comfort, IoT and occupant-feedback research." />
-            <FeatureCard icon={CheckCircle2} title="Business foundation" text="Business plan, website and pilot positioning prepared." />
-            <FeatureCard icon={Cpu} title="Build focus" text="MVP and integration work are the immediate execution priority." />
-            <FeatureCard icon={Target} title="Next step" text="Secure pilot partner and generate measured validation evidence." />
-          </div>
-        </section>
+        <Kicker>Current status</Kicker>
+        <SlideTitle>Credible early-stage company preparing for validation.</SlideTitle>
+        <div className="mt-9 grid grid-cols-2 gap-6">
+          <FeatureCard icon={ShieldCheck} title="Pre-commercial stage" text="No paid pilot is claimed; the company is preparing for measured validation." />
+          <FeatureCard icon={CheckCircle2} title="Business foundation" text="Business plan, website, positioning and pilot offer are prepared." />
+          <FeatureCard icon={Cpu} title="Technical foundation" text="Smart buildings, BMS/HVAC, IoT, occupant comfort and energy systems." />
+          <FeatureCard icon={Target} title="Next step" text="Secure pilot partner, complete MVP integration and generate measured evidence." />
+        </div>
       </SlideFrame>
     ),
   },
@@ -379,15 +397,13 @@ const slides: { title: string; render: () => ReactNode }[] = [
     title: "The ask",
     render: () => (
       <SlideFrame>
-        <section className="pt-8">
-          <Kicker>The ask</Kicker>
-          <SlideTitle>Seeking pilot access, technical partners and early-stage capital.</SlideTitle>
-          <div className="mt-10 grid grid-cols-3 gap-6">
-            <FeatureCard icon={Building2} title="Pilot site" text="Dutch office floor or zone with existing BMS infrastructure." />
-            <FeatureCard icon={Handshake} title="Technical partner" text="BMS/HVAC integration support and facility-team input." />
-            <FeatureCard icon={Euro} title="Funding" text="Early-stage capital to complete MVP, pilots and validation." />
-          </div>
-        </section>
+        <Kicker>The ask</Kicker>
+        <SlideTitle>Seeking pilot access, technical partners and early-stage capital.</SlideTitle>
+        <div className="mt-9 grid grid-cols-3 gap-6">
+          <FeatureCard tall icon={Building2} title="Pilot site" text="Dutch office floor or zone with BMS/HVAC infrastructure, facility support and occupant participation." />
+          <FeatureCard tall icon={Handshake} title="Technical partner" text="BMS/HVAC integration support, building-data access, commissioning review and pilot installation support." />
+          <FeatureCard tall icon={Euro} title="Funding" text="MVP completion, pilot hardware/software, integration testing, validation and early sales development." />
+        </div>
       </SlideFrame>
     ),
   },
@@ -397,7 +413,7 @@ const slides: { title: string; render: () => ReactNode }[] = [
       <div className="relative h-full w-full overflow-hidden bg-gradient-hero text-primary-foreground">
         <div className="absolute -right-44 -bottom-44 h-[620px] w-[620px] rounded-full bg-accent/30 blur-3xl" />
         <div className="relative z-10 flex h-full flex-col justify-between px-28 py-24">
-          <DeckLogo light />
+          <DeckLogo variant="large" />
           <section>
             <h2 className="max-w-[1050px] font-display text-[68px] font-bold leading-[1.05] tracking-tight">
               Personal comfort for smarter buildings.
