@@ -6,9 +6,9 @@ export default function SiteFooter() {
       <div className="container grid gap-8 py-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <img
-            src="/ace-logo-horizontal.png"
+            src="/brand/ace-logo-horizontal.svg?v=9"
             alt="Adaptive Climate Engine"
-            className="h-auto w-full max-w-[360px] object-contain"
+            className="h-auto w-full max-w-[340px] object-contain"
           />
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             Edge-based human-centric BMS middleware for legacy buildings. Personal comfort,
