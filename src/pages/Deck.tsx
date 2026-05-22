@@ -146,24 +146,24 @@ function StepCard({ n, icon: Icon, title, text, dark = false }: { n: string; ico
 
 function ArchitectureBlock({ title, text, icon: Icon }: { title: string; text: string; icon: IconType }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
-      <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent">
+    <div className="flex min-h-[205px] flex-col items-center justify-center rounded-2xl border border-border bg-card p-6 text-center shadow-soft">
+      <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent">
         <Icon className="h-6 w-6" />
       </div>
       <h3 className="mt-4 font-display text-[24px] font-semibold">{title}</h3>
-      <p className="mt-2 text-[17px] leading-snug text-muted-foreground">{text}</p>
+      <p className="mt-2 max-w-[260px] text-[17px] leading-snug text-muted-foreground">{text}</p>
     </div>
   );
 }
 
 function Milestone({ step, title, points }: { step: string; title: string; points: string[] }) {
   return (
-    <div className="relative min-h-[250px] rounded-2xl border border-border bg-card p-6 shadow-soft">
-      <div className="flex items-center gap-3">
-        <span className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-cool font-display text-lg font-bold text-primary-foreground">{step}</span>
-        <h3 className="font-display text-[23px] font-semibold leading-tight">{title}</h3>
+    <div className="relative flex min-h-[285px] flex-col rounded-2xl border border-white/15 bg-white/10 p-6 shadow-soft backdrop-blur">
+      <div className="flex min-h-[58px] items-center gap-3">
+        <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent font-display text-xl font-bold text-accent-foreground">{step}</span>
+        <h3 className="font-display text-[24px] font-semibold leading-tight text-white">{title}</h3>
       </div>
-      <ul className="mt-4 space-y-2 text-[16px] leading-snug text-muted-foreground">
+      <ul className="mt-5 space-y-2 text-[18px] leading-snug text-white/78">
         {points.map((p) => <li key={p}>• {p}</li>)}
       </ul>
     </div>
@@ -242,14 +242,12 @@ const slides: { title: string; render: () => ReactNode }[] = [
       <SlideFrame>
         <Kicker>Market opportunity</Kicker>
         <SlideTitle>Dutch BMS-enabled offices are the first beachhead.</SlideTitle>
-        <div className="mt-9 grid grid-cols-2 gap-6">
-          <MetricCard value="200+" label="qualified target accounts contacted per year" source="Business-plan assumption" />
-          <MetricCard value="~2%" label="conservative account-to-deployment conversion target" source="Business-plan assumption" />
-          <MetricCard value="€15k" label="indicative paid pilot entry point" source="Business-plan assumption" />
-          <MetricCard value="€15k ARR" label="target annual subscription per building after validation" source="Business-plan assumption" />
-        </div>
-        <div className="mt-7 rounded-2xl border border-border bg-secondary/45 p-6 text-[19px] leading-snug text-muted-foreground">
-          <span className="font-semibold text-foreground">Beachhead logic:</span> focus first on medium-large Dutch offices with existing BMS infrastructure, comfort pressure and energy-performance motivation.
+        <SlideText>Market sizing is based on conservative business-plan assumptions and will be refined during pilot validation.</SlideText>
+        <div className="mt-8 grid grid-cols-2 gap-6">
+          <MetricCard value="TAM" label="Dutch office buildings with potential for smart comfort and HVAC optimization." source="Dutch office market / business-plan estimate" />
+          <MetricCard value="SAM" label="Medium and large offices with existing BMS infrastructure and retrofit potential." source="Business-plan estimate" />
+          <MetricCard value="SOM" label="Initial reachable market: first 2–6 pilot-ready buildings across the validation phase." source="Conservative entry assumption" />
+          <MetricCard value="ARR" label="Pilot fee → integration fee → annual subscription per validated building." source="Business-model assumption" />
         </div>
       </SlideFrame>
     ),
@@ -366,13 +364,13 @@ const slides: { title: string; render: () => ReactNode }[] = [
         <Kicker>Roadmap</Kicker>
         <SlideTitle light>Build, validate, repeat, then scale.</SlideTitle>
         <div className="relative mt-10">
-          <div className="absolute left-10 right-10 top-[38px] h-1 rounded-full bg-white/20" />
+          <div className="absolute left-10 right-10 top-[39px] h-1 rounded-full bg-white/20" />
           <div className="grid grid-cols-5 gap-4">
-            <Milestone step="1" title="MVP completion" points={["Edge hub setup", "Core workflow", "Measurement framework"]} />
-            <Milestone step="2" title="Pilot 1" points={["One office zone", "Comfort feedback", "Measured validation"]} />
-            <Milestone step="3" title="Pilot 2" points={["Repeatability", "Deployment checklist", "Business case"]} />
-            <Milestone step="4" title="Early deployments" points={["Convert pilots", "Partner workflow", "Subscription model"]} />
-            <Milestone step="5" title="Cautious scale-up" points={["Templates", "Service partners", "Support process"]} />
+            <Milestone step="1" title="MVP completion" points={["Edge hub setup", "Core software workflow", "Measurement framework"]} />
+            <Milestone step="2" title="Pilot 1" points={["One office zone/floor", "Comfort feedback", "Measured validation"]} />
+            <Milestone step="3" title="Pilot 2" points={["Repeat deployment", "Standard checklist", "Refine business case"]} />
+            <Milestone step="4" title="Early deployments" points={["Convert validated pilots", "Partner installation", "Subscription model"]} />
+            <Milestone step="5" title="Cautious scale-up" points={["Repeatable templates", "Service partners", "Support and analytics"]} />
           </div>
         </div>
       </SlideFrame>
@@ -423,9 +421,9 @@ const slides: { title: string; render: () => ReactNode }[] = [
             </p>
           </section>
           <div className="grid grid-cols-3 gap-12 text-[20px] text-white/72">
-            <div><div className="text-sm uppercase tracking-wider text-white/45">Web</div><div className="mt-2 font-semibold">adaptiveclimate.nl</div></div>
-            <div><div className="text-sm uppercase tracking-wider text-white/45">Email</div><div className="mt-2 font-semibold">hello@adaptiveclimate.nl</div></div>
-            <div><div className="text-sm uppercase tracking-wider text-white/45">Focus</div><div className="mt-2 font-semibold">Dutch office pilots</div></div>
+            <div className="text-left"><div className="text-sm uppercase tracking-wider text-white/45">Web</div><div className="mt-2 font-semibold">adaptiveclimate.nl</div></div>
+            <div className="text-center"><div className="text-sm uppercase tracking-wider text-white/45">Email</div><div className="mt-2 font-semibold">hello@adaptiveclimate.nl</div></div>
+            <div className="text-right"><div className="text-sm uppercase tracking-wider text-white/45">Focus</div><div className="mt-2 font-semibold">Dutch office pilots</div></div>
           </div>
         </div>
       </div>
