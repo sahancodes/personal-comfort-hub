@@ -25,16 +25,16 @@ import SiteLayout from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-office.jpg";
 
 const liveUpdates = [
-  { icon: Thermometer, zone: "Comfort layer", msg: "Comfort feedback received → localized response evaluated", saved: "Illustrative" },
-  { icon: Fan, zone: "Building trend", msg: "Condition trend detected → optimization opportunity identified", saved: "Illustrative" },
-  { icon: Flame, zone: "Occupant feedback", msg: "Comfort preference updated → future recommendations refined", saved: "Illustrative" },
-  { icon: Droplets, zone: "Environmental signals", msg: "Building signals reviewed → comfort evaluation refreshed", saved: "Illustrative" },
-  { icon: Snowflake, zone: "Advisory layer", msg: "Advisory comfort optimization prepared for validation", saved: "Illustrative" },
-  { icon: Sun, zone: "Pilot scope", msg: "Local comfort response coordinated within pilot boundaries", saved: "Illustrative" },
-  { icon: Wind, zone: "Edge layer", msg: "Proprietary comfort intelligence evaluates next action", saved: "Illustrative" },
-  { icon: Brain, zone: "Comfort engine", msg: "Human-centric feedback included in comfort evaluation", saved: "Illustrative" },
-  { icon: Gauge, zone: "Building operation", msg: "Energy-saving opportunity identified without exposing internal logic", saved: "Illustrative" },
-  { icon: Leaf, zone: "Building total", msg: "Comfort and energy signals prepared for pilot-based measurement", saved: "Illustrative" },
+  { icon: Thermometer, zone: "Zone 4 · Maya", msg: "Feels cold → localized comfort support activated", saved: "Comfort improved" },
+  { icon: Fan, zone: "Zone 7 · Daniel", msg: "Feels warm → personal cooling support engaged", saved: "Less overcooling" },
+  { icon: Flame, zone: "Zone 2 · Aiko", msg: "Occupant feedback received → comfort response adjusted", saved: "Response tuned" },
+  { icon: Droplets, zone: "Zone 9 · Lab wing", msg: "Building condition trend detected → comfort evaluation updated", saved: "Trend captured" },
+  { icon: Snowflake, zone: "Zone 1 · Priya", msg: "Comfort trend improving → HVAC advisory prepared", saved: "Advisory ready" },
+  { icon: Sun, zone: "Zone 5 · Atrium", msg: "Solar gain rising → localized comfort response coordinated", saved: "Load reduced" },
+  { icon: Wind, zone: "Zone 6 · Lucas", msg: "Fresh-air comfort signal received → zone response reviewed", saved: "Airflow balanced" },
+  { icon: Brain, zone: "Zone 8 · Floor 4", msg: "Comfort preference updated → future response refined", saved: "Learning improved" },
+  { icon: Gauge, zone: "Zone 3 · Sara", msg: "Zone comfort stable → energy optimization opportunity detected", saved: "Opportunity found" },
+  { icon: Leaf, zone: "Building total", msg: "Comfort and energy signals aligned for pilot measurement", saved: "Pilot insight" },
 ];
 
 const heroStats = [
@@ -47,18 +47,18 @@ const heroStats = [
 const features = [
   {
     icon: Plug,
-    title: "Works with existing building systems",
-    desc: "Retrofit-friendly middleware designed to work alongside existing building infrastructure without requiring full BMS replacement.",
+    title: "Works with existing BMS infrastructure",
+    desc: "Retrofit-friendly middleware designed to work alongside common building automation and HVAC control environments.",
   },
   {
     icon: Brain,
-    title: "Proprietary comfort intelligence",
-    desc: "Combines building signals and occupant feedback through a proprietary edge comfort engine while keeping the internal logic confidential.",
+    title: "Edge-based comfort intelligence",
+    desc: "Combines building data and occupant feedback to support more responsive, human-centric comfort decisions.",
   },
   {
     icon: Gauge,
-    title: "Supports advisory HVAC optimization",
-    desc: "Provides high-level optimization support for comfort and energy performance while existing BMS safety logic remains authoritative.",
+    title: "Supports HVAC energy optimization",
+    desc: "Adds a comfort-aware advisory layer that helps buildings operate with better comfort and lower HVAC waste.",
   },
   {
     icon: Leaf,
@@ -68,9 +68,9 @@ const features = [
 ];
 
 const steps = [
-  { n: "01", title: "Sense", desc: "Building signals and human-centric feedback are used as inputs to a proprietary comfort evaluation process." },
-  { n: "02", title: "Decide locally", desc: "The edge comfort engine supports local decision-making while detailed algorithms and control logic remain proprietary." },
-  { n: "03", title: "Act", desc: "ACE supports localized comfort coordination and a high-level advisory layer for existing building systems." },
+  { n: "01", title: "Sense", desc: "Building data and occupant feedback create a more human-centered view of comfort in the space." },
+  { n: "02", title: "Decide locally", desc: "Edge-based comfort intelligence evaluates local conditions close to the building systems." },
+  { n: "03", title: "Support comfort", desc: "ACE coordinates localized comfort support and high-level BMS/HVAC advisory recommendations." },
 ];
 
 export default function Index() {
@@ -108,9 +108,9 @@ export default function Index() {
               <span className="block text-gradient">smarter, greener, more comfortable.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg text-muted-foreground animate-fade-up [animation-delay:120ms]">
-              Adaptive Climate Engine is human-centric AI middleware for legacy buildings.
-              It connects to existing building systems and combines building signals, occupant feedback
-              and proprietary edge intelligence to support personal comfort and reduce HVAC energy waste without
+              Adaptive Climate Engine is human-centric BMS middleware for legacy buildings.
+              It works with existing BMS infrastructure and combines building data, occupant feedback
+              and edge-based comfort intelligence to support personal comfort and HVAC energy optimization without
               expensive BMS replacement.
             </p>
             <div className="mt-8 flex flex-wrap gap-3 animate-fade-up [animation-delay:240ms]">
@@ -181,9 +181,6 @@ export default function Index() {
                   </div>
                   <span className="text-xs font-semibold text-primary whitespace-nowrap">{update.saved}</span>
                 </div>
-                <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">
-                  Illustrative simulation. Actual control behaviour, algorithms and integration logic are proprietary and validated during pilot deployment.
-                </p>
               </div>
             </div>
             <div className="absolute -right-6 -top-6 hidden h-28 w-28 rounded-full bg-gradient-warm opacity-30 blur-2xl md:block" />
@@ -250,11 +247,11 @@ export default function Index() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-wider text-accent">The solution</p>
           <h2 className="mt-2 font-display text-4xl font-bold md:text-5xl">
-            A retrofit-friendly proprietary comfort layer.
+            A retrofit-friendly edge comfort layer.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Adaptive Climate Engine works alongside existing building systems as a human-centric comfort intelligence layer.
-            It supports localized comfort and high-level HVAC optimization while keeping the underlying methods proprietary.
+            It supports localized comfort and high-level HVAC optimization while keeping deployment practical for legacy buildings.
           </p>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -278,7 +275,7 @@ export default function Index() {
               <p className="text-sm font-semibold uppercase tracking-wider text-accent">How it works</p>
               <h2 className="mt-2 font-display text-4xl font-bold md:text-5xl">Sense. Decide locally. Support comfort.</h2>
               <p className="mt-4 max-w-md text-primary-foreground/80">
-                Building signals and occupant feedback feed a proprietary edge comfort engine. The public site shows the concept only; internal logic remains confidential.
+                Building data and occupant feedback feed edge-based comfort intelligence. ACE then supports localized comfort and BMS/HVAC advisory recommendations.
               </p>
             </div>
             <div className="grid gap-6 lg:col-span-7 md:grid-cols-3">
@@ -329,7 +326,7 @@ export default function Index() {
             </h2>
             <p className="mt-4 text-primary-foreground/85">
               Start with one floor or zone. Validate comfort and energy impact before scaling,
-              with no rip-and-replace and without exposing proprietary implementation details.
+              with no rip-and-replace.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-background text-foreground hover:bg-background/90">
@@ -343,7 +340,7 @@ export default function Index() {
               {[
                 { i: ShieldCheck, t: "No BMS replacement required" },
                 { i: CheckCircle2, t: "Pilot-first, low-risk deployment" },
-                { i: Users, t: "Human feedback + building signals" },
+                { i: Users, t: "Human feedback + building data" },
                 { i: Leaf, t: "Supports ESG & smart-building modernization" },
               ].map((i) => (
                 <li key={i.t} className="flex items-center gap-2"><i.i className="h-4 w-4 text-accent" /> {i.t}</li>
