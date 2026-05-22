@@ -17,12 +17,12 @@ export default function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/90 backdrop-blur-xl">
-      <div className="container flex h-20 items-center justify-between gap-5">
-        <Link to="/" className="flex shrink-0 items-center" aria-label="Adaptive Climate Engine home">
+      <div className="container flex min-h-24 items-center justify-between gap-5 py-3">
+        <Link to="/" className="flex shrink-0 items-center overflow-visible" aria-label="Adaptive Climate Engine home">
           <img
             src="/ace-logo-horizontal.png"
             alt="Adaptive Climate Engine"
-            className="h-12 w-auto max-w-[340px] object-contain sm:h-14 lg:max-w-[420px]"
+            className="block h-auto w-[280px] max-w-[58vw] object-contain sm:w-[360px] lg:w-[420px]"
           />
         </Link>
 
