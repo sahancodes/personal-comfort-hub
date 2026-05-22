@@ -9,7 +9,6 @@ import {
   Plug,
   Database,
   Workflow,
-  Gauge,
   Fan,
   Flame,
   Sun,
@@ -20,33 +19,33 @@ import {
 const blocks = [
   {
     icon: Plug,
-    title: "BMS integration layer",
-    desc: "Designed to work alongside common building automation environments and existing HVAC control infrastructure, without requiring full BMS replacement.",
+    title: "BMS / automation integration",
+    desc: "Designed to work with common building automation environments including BACnet, Modbus, KNX, M-Bus and major BMS platforms such as Priva, Niagara, Siemens, Honeywell and Schneider.",
   },
   {
     icon: Radio,
-    title: "Occupant feedback layer",
-    desc: "Adds a human signal to building operation by capturing how occupants experience comfort in the space.",
+    title: "Sensors + occupant feedback",
+    desc: "Desk and zone sensors capture environmental conditions while a simple occupant interface adds the human comfort signal that traditional BMS logic often misses.",
   },
   {
     icon: Brain,
-    title: "Edge comfort intelligence",
-    desc: "Processes building and comfort signals locally to support faster comfort response and operational recommendations.",
+    title: "Local comfort model",
+    desc: "Edge-based comfort intelligence learns from building signals and occupant feedback to support faster comfort response close to the building systems.",
   },
   {
     icon: Workflow,
-    title: "Personal comfort coordination",
-    desc: "Supports compatible localized comfort technologies such as desk-level cooling, heating, radiant or airflow-based devices, depending on pilot scope.",
+    title: "Orchestration engine",
+    desc: "Coordinates compatible personal comfort devices such as desk fans, heated chairs, radiant panels, foot warmers and local air diffusers, together with BMS advisory support.",
   },
   {
     icon: Database,
-    title: "Pilot measurement layer",
-    desc: "Compares comfort, operational feasibility and energy-saving potential before wider rollout.",
+    title: "Measurement & verification",
+    desc: "Pilot-based baselining and reporting support comfort evaluation, energy-impact assessment, ESG reporting and wider rollout decisions.",
   },
   {
     icon: ShieldCheck,
-    title: "Safety-aware deployment",
-    desc: "Works with existing BMS constraints and facility management practices instead of replacing core building safety logic.",
+    title: "Privacy & safety by design",
+    desc: "Existing BMS safety logic and operating limits remain authoritative. Deployment can begin in read-only or advisory mode before controlled optimization.",
   },
 ];
 
@@ -184,9 +183,6 @@ export default function Technology() {
       <section className="border-y border-border/60 bg-secondary/40 py-20">
         <div className="container">
           <h2 className="font-display text-3xl font-bold md:text-4xl">What's inside</h2>
-          <p className="mt-3 max-w-3xl text-muted-foreground">
-            Adaptive Climate Engine combines building integration, occupant feedback, edge intelligence and pilot-based measurement into a practical retrofit layer for existing buildings.
-          </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {blocks.map((b) => (
               <div key={b.title} className="rounded-2xl border border-border bg-card p-6 shadow-soft">
@@ -248,11 +244,19 @@ export default function Technology() {
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="rounded-2xl border border-border bg-card p-8 shadow-soft lg:col-span-2">
             <h3 className="font-display text-xl font-semibold">Compatibility</h3>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Adaptive Climate Engine is designed for retrofit-friendly evaluation with common BMS and building automation environments,
-              including BACnet, Modbus, KNX, Priva, Siemens, Honeywell, Schneider, JCI/Niagara-style infrastructures,
-              MQTT / REST integration contexts and SCADA-based supervisory systems. Final integration scope is confirmed case-by-case during pilot scoping.
-            </p>
+            <ul className="mt-4 grid gap-3 text-sm md:grid-cols-2">
+              {[
+                "BACnet/IP, BACnet MS/TP, Modbus TCP/RTU, KNX and M-Bus",
+                "Priva, Niagara, Siemens Desigo, Honeywell, Johnson Controls and Schneider EcoStruxure",
+                "MQTT / REST integration contexts for higher-level platforms",
+                "Supports pilot evaluation for comfort, energy and IEQ reporting",
+              ].map((i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <Plug className="mt-0.5 h-4 w-4 text-accent" />
+                  <span>{i}</span>
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="rounded-2xl border border-border bg-gradient-cool p-8 text-primary-foreground shadow-elegant">
             <h3 className="font-display text-xl font-semibold">Ready to evaluate ACE on a real building?</h3>
