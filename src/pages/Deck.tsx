@@ -29,7 +29,7 @@ import {
   Workflow,
 } from "lucide-react";
 
-const logo = "/ace-logo-horizontal.png";
+const logo = "/brand/ace-logo-horizontal.svg?v=9";
 type IconType = typeof Activity;
 
 function SlideShell({ children }: { children: ReactNode }) {
