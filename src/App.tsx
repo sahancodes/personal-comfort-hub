@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Technology from "./pages/Technology.tsx";
+import AdaptiveComfort from "./pages/AdaptiveComfort.tsx";
 import Buildings from "./pages/Buildings.tsx";
 import Investors from "./pages/Investors.tsx";
 import Deck from "./pages/Deck.tsx";
@@ -24,6 +25,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/technology" element={<Technology />} />
+          <Route path="/adaptive-comfort" element={<AdaptiveComfort />} />
           <Route path="/buildings" element={<Buildings />} />
           <Route path="/investors" element={<Investors />} />
           <Route path="/deck" element={<Deck />} />
