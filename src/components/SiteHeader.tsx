@@ -12,6 +12,7 @@ const primaryLinks = [
 
 const technologyLinks = [
   { to: "/technology", label: "Technology" },
+  { to: "/adaptive-comfort", label: "Adaptive comfort" },
   { to: "/research", label: "Research" },
 ];
 
