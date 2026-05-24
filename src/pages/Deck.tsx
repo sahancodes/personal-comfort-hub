@@ -104,15 +104,17 @@ function SlideText({ children, light = false, narrow = false }: { children: Reac
 }
 
 function SourceNote({ children, light = false }: { children: ReactNode; light?: boolean }) {
-  return <p className={`mt-5 text-[13px] leading-relaxed ${light ? "text-white/55" : "text-muted-foreground"}`}>{children}</p>;
+  void children;
+  void light;
+  return null;
 }
 
-function MetricCard({ value, label, source, dark = false }: { value: string; label: string; source?: string; dark?: boolean }) {
+function MetricCard({ value, label, source: _source, dark = false }: { value: string; label: string; source?: string; dark?: boolean }) {
+  void _source;
   return (
     <div className={`min-h-[190px] rounded-2xl border p-7 shadow-soft ${dark ? "border-white/15 bg-white/8" : "border-border bg-card"}`}>
       <div className="font-display text-[48px] font-bold leading-none text-gradient">{value}</div>
       <p className={`mt-4 text-[19px] leading-snug ${dark ? "text-white/78" : "text-muted-foreground"}`}>{label}</p>
-      {source && <p className={`mt-4 text-[12px] ${dark ? "text-white/45" : "text-muted-foreground"}`}>{source}</p>}
     </div>
   );
 }
@@ -207,14 +209,14 @@ const slides: { title: string; render: () => ReactNode }[] = [
             <Kicker>The problem</Kicker>
             <SlideTitle narrow>Legacy BMS controls zones, not people.</SlideTitle>
             <SlideText narrow>
-              Existing systems optimize schedules, zones and sensor readings, but the business-plan evidence shows a persistent gap between technical control and real occupant comfort.
+              Existing systems optimize schedules, zones and sensor readings, but evidence shows a persistent gap between technical control and real occupant comfort.
             </SlideText>
           </section>
           <section className="grid grid-cols-2 gap-5">
-            <MetricCard value="~40%" label="of European energy consumption is linked to buildings." source="Business plan / EU building-energy context" />
-            <MetricCard value="40–60%" label="of building energy use can be HVAC-related." source="Business plan research base" />
-            <MetricCard value="~10–15%" label="of buildings may achieve acceptable thermal-comfort performance." source="Business plan comfort-gap framing" />
-            <MetricCard value="40–43%" label="of occupants can still report thermal discomfort." source="Business plan / comfort literature" />
+            <MetricCard value="~40%" label="of European energy consumption is linked to buildings." />
+            <MetricCard value="40–60%" label="of building energy use can be HVAC-related." />
+            <MetricCard value="~10–15%" label="of buildings may achieve acceptable thermal-comfort performance." />
+            <MetricCard value="40–43%" label="of occupants can still report thermal discomfort." />
           </section>
         </div>
       </SlideFrame>
@@ -232,7 +234,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <FeatureCard icon={Users} title="Comfort pressure" text="Thermal discomfort can affect productivity by an estimated 2–5%, making comfort a business issue." />
           <FeatureCard icon={Building2} title="Retrofit pressure" text="Major retrofit upgrades can cost roughly €50–€150/m², creating demand for practical middleware upgrades." />
         </div>
-        <SourceNote>Source anchors: business plan sections on regulatory drivers, retrofit cost, comfort/productivity and building-energy pressure.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -244,10 +245,10 @@ const slides: { title: string; render: () => ReactNode }[] = [
         <SlideTitle>Dutch BMS-enabled offices are the first beachhead.</SlideTitle>
         <SlideText>Market sizing is framed conservatively around retrofit-ready offices and pilot-to-subscription conversion.</SlideText>
         <div className="mt-8 grid grid-cols-2 gap-6">
-          <MetricCard value="2k–20k m²" label="initial office-building segment targeted for Dutch pilots and early deployments." source="Business-plan target segment" />
-          <MetricCard value="8–10%" label="retrofit-market growth context used in the business plan." source="Business-plan market analysis" />
-          <MetricCard value="€2–€5/m²" label="target annual subscription pricing logic for scalable building revenue." source="Business-model assumption" />
-          <MetricCard value="€15k ARR" label="illustrative annual subscription for a 5,000 m² office building." source="Business-plan example" />
+          <MetricCard value="2k–20k m²" label="initial office-building segment targeted for Dutch pilots and early deployments." />
+          <MetricCard value="8–10%" label="retrofit-market growth context supporting demand for modernization." />
+          <MetricCard value="Legacy stock" label="existing offices need practical upgrades without full BMS replacement." />
+          <MetricCard value="Pilot-first" label="low-risk entry model for owners, facility managers and service partners." />
         </div>
       </SlideFrame>
     ),
@@ -275,7 +276,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
             <div className="rounded-xl border border-border bg-card px-4 py-3">Field / occupant environment</div>
           </div>
         </div>
-        <SourceNote>Business-plan concept: HVAC provides the base climate, while personal comfort systems support individual comfort needs.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -290,7 +290,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <StepCard dark n="02" icon={Cpu} title="Decide locally" text="Place comfort intelligence closer to the automation layer, where practical control response is faster." />
           <StepCard dark n="03" icon={Fan} title="Support comfort" text="Coordinate localized comfort support and high-level BMS/HVAC advisory recommendations." />
         </div>
-        <SourceNote light>Business-plan evidence: SCADA/supervisory systems can operate at seconds-to-minutes latency, while local automation is the practical response layer.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -306,7 +305,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <FeatureCard icon={LineChart} title="Cloud analytics" text="Good for portfolio insights, but latency and integration depth can limit direct comfort control." />
           <FeatureCard icon={Sparkles} title="ACE" text="Retrofit-first, edge-based and human-in-the-loop, working alongside existing BMS infrastructure." />
         </div>
-        <SourceNote>Business-plan differentiators: no full BMS replacement, edge control logic, human feedback and comfort-energy optimization.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -317,12 +315,11 @@ const slides: { title: string; render: () => ReactNode }[] = [
         <Kicker>Evidence base</Kicker>
         <SlideTitle>Research supports the logic. ACE results will be measured during pilots.</SlideTitle>
         <div className="mt-9 grid grid-cols-2 gap-6">
-          <MetricCard value="~6%" label="energy-saving potential per 1°C setpoint/deadband shift." source="Business-plan energy model" />
-          <MetricCard value="10–15%" label="HVAC energy-saving potential from a 2°C deadband expansion." source="Business-plan research base" />
-          <MetricCard value="13–20%" label="excess cooling-energy risk from overcooling in summer." source="Business-plan energy-inefficiency analysis" />
-          <MetricCard value="~90%" label="individual comfort mismatch risk in traditional PMV-style prediction." source="Business-plan human-centric analysis" />
+          <MetricCard value="~6%" label="energy-saving potential per 1°C setpoint/deadband shift." />
+          <MetricCard value="10–15%" label="HVAC energy-saving potential from a 2°C deadband expansion." />
+          <MetricCard value="13–20%" label="excess cooling-energy risk from overcooling in summer." />
+          <MetricCard value="~90%" label="individual comfort mismatch risk in traditional PMV-style prediction." />
         </div>
-        <SourceNote>Important: these are research-backed potential figures and business-plan assumptions, not claimed ACE pilot results.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -333,10 +330,10 @@ const slides: { title: string; render: () => ReactNode }[] = [
         <Kicker>Business model</Kicker>
         <SlideTitle>Validate → convert → expand.</SlideTitle>
         <div className="mt-9 grid grid-cols-2 gap-6">
-          <MetricCard value="€2–€5/m²" label="target annual subscription range for building-level software and support." source="Business-model assumption" />
-          <MetricCard value="€15k ARR" label="illustrative annual subscription for a 5,000 m² building." source="Business-plan example" />
-          <MetricCard value="€100–€300" label="indicative PCS hardware range per device where included in scope." source="Business-plan cost model" />
-          <MetricCard value="10–20%" label="optional future performance-based share of verified savings." source="Future model after pilot validation" />
+          <MetricCard value="Paid pilot" label="first commercial step to validate feasibility, comfort response and energy-saving potential." />
+          <MetricCard value="Integration fee" label="one-time setup for edge hub, selected devices, commissioning and building integration." />
+          <MetricCard value="€15k ARR" label="illustrative annual subscription for a 5,000 m² building after validation." />
+          <MetricCard value="10–20%" label="optional future share of verified savings where performance contracting is suitable." />
         </div>
         <div className="mt-7 rounded-2xl border border-border bg-secondary/45 p-6 text-[20px] text-muted-foreground">
           <span className="font-semibold text-foreground">Commercial logic:</span> begin with a paid pilot, convert validated buildings into subscriptions and expand across portfolios.
@@ -356,7 +353,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <FeatureCard icon={LineChart} title="Measured proof" text="Measure comfort response, feasibility and energy-saving potential before commercial claims." />
           <FeatureCard icon={Handshake} title="Subscription conversion" text="Move validated pilots into integration fees and annual software/support subscriptions." />
         </div>
-        <SourceNote>Business-plan route: MVP in one building, pilot expansion and data validation, then repeatable deployments.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -376,7 +372,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
             <Milestone step="5" title="Cautious scale-up" points={["Repeatable templates", "Service partners", "Support process"]} />
           </div>
         </div>
-        <SourceNote light>Business-plan implementation: Phase 1 MVP, Phase 2 pilot expansion/data validation, Phase 3 multi-building scale-up.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -392,7 +387,6 @@ const slides: { title: string; render: () => ReactNode }[] = [
           <FeatureCard icon={Cpu} title="Technical foundation" text="EngD-level smart buildings, PECS, BMS/HVAC, IoT, occupant feedback and ML experience." />
           <FeatureCard icon={Target} title="Next milestone" text="Secure Dutch office pilot, complete MVP integration and produce measured evidence." />
         </div>
-        <SourceNote>Founder background: PECS research and implementation experience at TU/e and Kropman context, with BMS/HVAC and IoT focus.</SourceNote>
       </SlideFrame>
     ),
   },
@@ -405,9 +399,8 @@ const slides: { title: string; render: () => ReactNode }[] = [
         <div className="mt-9 grid grid-cols-3 gap-6">
           <FeatureCard tall icon={Building2} title="Pilot site" text="Dutch office floor or zone with existing BMS/HVAC infrastructure, facility support and occupant participation." />
           <FeatureCard tall icon={Handshake} title="Technical partner" text="BMS/HVAC integration support, building-data access, commissioning review and pilot installation support." />
-          <FeatureCard tall icon={Euro} title="Funding" text="Business-plan range: €20k–€50k for hardware/PCS/edge plus €5k–€10k installation for initial pilot setup." />
+          <FeatureCard tall icon={Euro} title="Funding" text="Pilot setup range: €20k–€50k for hardware/PCS/edge plus €5k–€10k installation." />
         </div>
-        <SourceNote>Funding figures are business-plan cost ranges for pilot setup and validation, not final customer pricing.</SourceNote>
       </SlideFrame>
     ),
   },
