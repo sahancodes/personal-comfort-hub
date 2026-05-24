@@ -10,7 +10,7 @@ const primaryLinks = [
   { to: "/contact", label: "Contact" },
 ];
 
-const technologyLinks = [
+const knowledgeLinks = [
   { to: "/technology", label: "Technology" },
   { to: "/adaptive-comfort", label: "Adaptive comfort" },
   { to: "/research", label: "Research" },
@@ -74,7 +74,7 @@ export default function SiteHeader() {
           >
             Home
           </RouterNavLink>
-          <NavGroup label="Technology" links={technologyLinks} />
+          <NavGroup label="Knowledge" links={knowledgeLinks} />
           <NavGroup label="Stakeholders" links={stakeholderLinks} />
           {primaryLinks.slice(1).map((l) => (
             <RouterNavLink
@@ -119,8 +119,8 @@ export default function SiteHeader() {
             >
               Home
             </RouterNavLink>
-            <div className="px-3 pt-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Technology</div>
-            {technologyLinks.map((l) => (
+            <div className="px-3 pt-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">Knowledge</div>
+            {knowledgeLinks.map((l) => (
               <RouterNavLink
                 key={l.to}
                 to={l.to}
