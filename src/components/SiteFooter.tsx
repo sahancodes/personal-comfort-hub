@@ -6,7 +6,7 @@ export default function SiteFooter() {
       <div className="container grid gap-8 py-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <img
-            src="/brand/ace-logo-horizontal.svg?v=9"
+            src="/brand/primary-logo-transparent.svg?v=9"
             alt="Adaptive Climate Engine"
             className="h-auto w-full max-w-[340px] object-contain"
           />
