@@ -9,6 +9,8 @@ import Buildings from "./pages/Buildings.tsx";
 import Investors from "./pages/Investors.tsx";
 import Deck from "./pages/Deck.tsx";
 import Research from "./pages/Research.tsx";
+import Contact from "./pages/Contact.tsx";
+import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/investors" element={<Investors />} />
           <Route path="/deck" element={<Deck />} />
           <Route path="/research" element={<Research />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
