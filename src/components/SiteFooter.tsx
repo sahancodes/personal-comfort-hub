@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import aceLogoStacked from "@/assets/ace-logo-stacked.png.asset.json";
 
 export default function SiteFooter() {
   return (
@@ -6,10 +7,11 @@ export default function SiteFooter() {
       <div className="container grid gap-8 py-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <img
-            src="/brand/primary-logo-transparent.svg?v=9"
+            src={aceLogoStacked.url}
             alt="Adaptive Climate Engine"
-            className="h-auto w-full max-w-[340px] object-contain"
+            className="h-auto w-full max-w-[220px] object-contain"
           />
+
           <p className="mt-4 max-w-sm text-sm text-muted-foreground">
             Edge-based human-centric BMS middleware for legacy buildings. Personal comfort,
             smarter buildings and lower HVAC energy waste.

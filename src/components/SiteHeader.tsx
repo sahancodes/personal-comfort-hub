@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import aceLogoHorizontal from "@/assets/ace-logo-horizontal.png.asset.json";
 
 const primaryLinks = [
   { to: "/", label: "Home" },
@@ -55,9 +56,9 @@ export default function SiteHeader() {
       <div className="container flex min-h-24 items-center justify-between gap-5 py-3">
         <Link to="/" className="flex shrink-0 items-center overflow-visible" aria-label="Adaptive Climate Engine home">
           <img
-            src="/brand/horizontal-lockup-transparent.svg?v=9"
+            src={aceLogoHorizontal.url}
             alt="Adaptive Climate Engine"
-            className="block h-auto w-[240px] max-w-[58vw] object-contain sm:w-[300px] lg:w-[340px]"
+            className="block h-auto w-[220px] max-w-[58vw] object-contain sm:w-[260px] lg:w-[300px]"
           />
         </Link>
 
