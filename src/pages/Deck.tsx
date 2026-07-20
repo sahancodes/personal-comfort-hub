@@ -29,7 +29,8 @@ import {
   Workflow,
 } from "lucide-react";
 
-const logo = "/brand/horizontal-lockup-transparent.svg?v=9";
+import aceLogoHorizontal from "@/assets/ace-logo-horizontal.png.asset.json";
+const logo = aceLogoHorizontal.url;
 type IconType = typeof Activity;
 
 function SlideShell({ children }: { children: ReactNode }) {
