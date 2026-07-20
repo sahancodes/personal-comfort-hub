@@ -29,7 +29,8 @@ import {
   Workflow,
 } from "lucide-react";
 
-const logo = "/brand/horizontal-lockup-transparent.svg?v=9";
+import aceLogoHorizontal from "@/assets/ace-logo-horizontal.png.asset.json";
+const logo = aceLogoHorizontal.url;
 type IconType = typeof Activity;
 
 function SlideShell({ children }: { children: ReactNode }) {
@@ -65,7 +66,7 @@ function SlideShell({ children }: { children: ReactNode }) {
 
 function DeckLogo({ variant = "standard" }: { variant?: "standard" | "large" }) {
   return (
-    <div className={`${variant === "large" ? "w-[340px]" : "w-[220px]"} rounded-xl bg-white/95 px-4 py-3 shadow-soft`}>
+    <div className={`${variant === "large" ? "w-[380px]" : "w-[240px]"}`}>
       <img src={logo} alt="Adaptive Climate Engine" className="block h-auto w-full object-contain" />
     </div>
   );
