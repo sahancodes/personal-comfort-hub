@@ -124,6 +124,7 @@
   .bg-gradient-hero { background: var(--gradient-hero); }
   .bg-gradient-cool { background: var(--gradient-cool); }
   .bg-gradient-warm { background: var(--gradient-warm); }
+  .bg-gradient-brand { background: var(--gradient-brand); }
   .bg-gradient-surface { background: var(--gradient-surface); }
   .shadow-elegant { box-shadow: var(--shadow-elegant); }
   .shadow-glow { box-shadow: var(--shadow-glow); }
