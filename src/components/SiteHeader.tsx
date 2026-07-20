@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import aceLogoHorizontal from "@/assets/ace-logo-horizontal.png.asset.json";
 
 const primaryLinks = [
   { to: "/", label: "Home" },
