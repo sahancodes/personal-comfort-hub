@@ -29,8 +29,8 @@ import {
   Workflow,
 } from "lucide-react";
 
-import aceLogoHorizontal from "@/assets/ace-logo-horizontal.png.asset.json";
-const logo = aceLogoHorizontal.url;
+import aceLogoHorizontal from "@/assets/ace-logo-horizontal.png";
+const logo = aceLogoHorizontal;
 type IconType = typeof Activity;
 
 function SlideShell({ children }: { children: ReactNode }) {

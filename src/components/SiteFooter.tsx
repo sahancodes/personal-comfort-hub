@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import aceLogoStacked from "@/assets/ace-logo-stacked.png.asset.json";
+import aceLogoStacked from "@/assets/ace-logo-stacked.png";
 
 export default function SiteFooter() {
   return (
@@ -7,7 +7,7 @@ export default function SiteFooter() {
       <div className="container grid gap-8 py-12 md:grid-cols-4">
         <div className="md:col-span-2">
           <img
-            src={aceLogoStacked.url}
+            src={aceLogoStacked}
             alt="Adaptive Climate Engine"
             className="h-auto w-full max-w-[220px] object-contain"
           />
