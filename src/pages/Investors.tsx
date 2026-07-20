@@ -9,11 +9,11 @@ const market = [
   { v: "~40%", l: "of EU energy use is from buildings", id: "hvac-energy-share" },
   { v: "$22B", l: "smart-building controls TAM by 2030", id: "tam" },
   { v: "10–20%", l: "potential HVAC energy reduction", id: "energy-reduction" },
-  { v: "2×-digit", l: "CAGR — personal comfort & IEQ tech", id: "cagr" },
+  { v: "2×-digit", l: "CAGR, personal comfort & IEQ tech", id: "cagr" },
 ];
 
 const narrative = [
-  { icon: Building2, t: "Massive retrofit market", d: "Most commercial buildings are legacy. Full BMS replacement is expensive and disruptive — leaving a large gap for retrofit-friendly middleware." },
+  { icon: Building2, t: "Massive retrofit market", d: "Most commercial buildings are legacy. Full BMS replacement is expensive and disruptive, leaving a large gap for retrofit-friendly middleware." },
   { icon: Zap, t: "Energy-efficiency pressure", d: "Volatile energy prices push HVAC waste onto the CFO's desk. Edge optimization is a low-CAPEX path to verifiable savings." },
   { icon: Leaf, t: "ESG & smart-building demand", d: "EU EPBD, CSRD and SEC climate disclosure require defensible Scope 2 reductions and healthier workplaces." },
   { icon: Brain, t: "AI & edge computing trend", d: "Practical, on-prem AI is finally credible for mission-critical operations like HVAC and comfort." },
@@ -22,10 +22,10 @@ const narrative = [
 ];
 
 const advantages = [
-  { icon: Layers, t: "Retrofit-friendly middleware moat", d: "Vendor-neutral integration across BACnet, Modbus, KNX, Priva and major BMS — hard for incumbents to replicate." },
-  { icon: Users, t: "Human-in-the-loop data flywheel", d: "Each occupant strengthens per-zone and per-person comfort models — a defensible, building-spanning dataset." },
+  { icon: Layers, t: "Retrofit-friendly middleware moat", d: "Vendor-neutral integration across BACnet, Modbus, KNX, Priva and major BMS, which is hard for incumbents to replicate." },
+  { icon: Users, t: "Human-in-the-loop data flywheel", d: "Each occupant strengthens per-zone and per-person comfort models, creating a defensible, building-spanning dataset." },
   { icon: Globe2, t: "Regulatory tailwind", d: "EU EPBD, CSRD, SEC climate rules make verifiable HVAC reductions a board-level priority." },
-  { icon: ShieldCheck, t: "Pilot-first credibility", d: "Read-only / advisory mode lowers buyer risk — accelerating from pilot to portfolio without contractual friction." },
+  { icon: ShieldCheck, t: "Pilot-first credibility", d: "Read-only / advisory mode lowers buyer risk, accelerating from pilot to portfolio without contractual friction." },
 ];
 
 const businessModel = [
@@ -143,7 +143,7 @@ export default function Investors() {
               A retrofit window opens.
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Several structural forces are converging — making practical, edge-based retrofit
+              Several structural forces are converging, making practical, edge-based retrofit
               middleware the right shape of solution at the right moment.
             </p>
           </div>
