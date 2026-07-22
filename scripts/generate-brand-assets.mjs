@@ -68,7 +68,7 @@ for (const size of [512, 192, 180, 32, 16]) {
 await appIcon
   .clone()
   .resize(256, 256, { fit: "contain", background: { r: 255, g: 255, b: 255, alpha: 0 } })
-  .toFile("public/favicon.ico");
+  .toFile("public/ace-logo-icon.ico");
 
 const darkLogo = await sharp(source)
   .extract(crops.dark)
